@@ -1,0 +1,33 @@
+{
+  "name": "dynamic-logos",
+  "version": "1.0.0",
+  "description": "Visualisation of dynamic logos",
+  "main": "index.html",
+  "scripts": {
+    "dev": "webpack-dev-server --hot --progress",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/errnesto/dynamic-logos.git"
+  },
+  "author": "Manuel Reich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/errnesto/dynamic-logos/issues"
+  },
+  "homepage": "https://github.com/errnesto/dynamic-logos#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.5.1",
+    "html-webpack-plugin": "^2.28.0",
+    "standard": "*",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5",
+    "babel-plugin-transform-react-jsx": "^6.24.1"
+  },
+  "dependencies": {
+    "preact": "^8.1.0"
+  }
+}
