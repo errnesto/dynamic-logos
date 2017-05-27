@@ -28,6 +28,7 @@
     "babel-plugin-transform-react-jsx": "^6.24.1"
   },
   "dependencies": {
+    "paths-js": "^0.4.5",
     "preact": "^8.1.0"
   }
 }
