@@ -1,9 +1,21 @@
 /** @jsx h */
 import { h, Component } from 'preact'
 import Sector from 'paths-js/sector'
+import Chroma from 'chroma-js'
 
 export default class Sectors extends Component {
   static TWO_PI = 2 * Math.PI
+  static colorScale = Chroma.scale([
+    'FFFFFF',
+    'FEF5E2',
+    'FED89A',
+    'FEC349',
+    '86D0CB',
+    '38B7A8',
+    '828BBF',
+    '46558B',
+    '29255C'
+  ])
 
   constructor (props) {
     super()
@@ -45,18 +57,21 @@ export default class Sectors extends Component {
     this.setState({ values }, () => { window.requestAnimationFrame(this.animate) })
   }
 
-  render ({ center }, { values }) {
-    const sectors = values.map((value, index) => Sector({
-      center: this.props.center,
-      r: 0,
-      R: value,
-      start: Sectors.TWO_PI * index / values.length,
-      end: Sectors.TWO_PI * (index + 1) / values.length
+  render ({ center, valueRange }, { values }) {
+    const parts = values.map((value, index) => ({
+      path: Sector({
+        center: this.props.center,
+        r: 0,
+        R: value,
+        start: Sectors.TWO_PI * index / values.length,
+        end: Sectors.TWO_PI * (index + 1) / values.length
+      }).path.print(),
+      color: Sectors.colorScale(value / valueRange[1])
     }))
 
     return <svg width='500' height='500' viewBox='0 0 30 30'>
-      {sectors.map(sector =>
-        <path d={sector.path.print()} fill='blue' stroke-width='0.1' />
+      {parts.map(({ path, color }) =>
+        <path d={path} fill={color} stroke-width='0.07' stroke='white' />
       )}
     </svg>
   }
