@@ -11,7 +11,7 @@ class Index extends Component {
 
   render (props, { axes }) {
     if (!axes) return null
-    return <Graph axes={axes} />
+    return <Graph axes={axes} valueRange={[0, 8]} />
   }
 }
 

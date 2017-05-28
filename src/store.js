@@ -2,11 +2,11 @@ import Hover from 'hover'
 
 const initialState = {
   axes: {
-    a: { name: 'A', value: 1 },
-    b: { name: 'B', value: 2 },
-    c: { name: 'C', value: 6 },
-    d: { name: 'D', value: 9 },
-    e: { name: 'E', value: 7 }
+    color: { name: 'Farbe', value: 1 },
+    wording: { name: 'Sprache', value: 2 },
+    images: { name: 'Bildwelt', value: 6 },
+    form: { name: 'Form', value: 8 },
+    font: { name: 'Typo', value: 7 }
   }
 }
 const actions = {
