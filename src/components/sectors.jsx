@@ -15,7 +15,7 @@ export default class Sectors extends Component {
     '828BBF',
     '46558B',
     '29255C'
-  ]).mode('hsl')
+  ])
 
   constructor (props) {
     super()
@@ -74,7 +74,7 @@ export default class Sectors extends Component {
 
     return <svg width='500' height='500' viewBox='0 0 30 30'>
       {parts.map(({ path, color }) =>
-        <path d={path} fill={color} stroke-width='0.07' stroke='white' />
+        <path d={path} fill={color} stroke-width='0.06' stroke='white' />
       )}
     </svg>
   }
