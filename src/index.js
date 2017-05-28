@@ -1,8 +1,18 @@
 /** @jsx h */
-import { h, render } from 'preact'
-import Graph from './components/graph.jsx'
+import { h, render, Component } from 'preact'
+import Graph from '~/components/graph.jsx'
+import store from '~/store.js'
 
-render(
-  <Graph center={[15, 15]} values={[1, 2, 6, 9, 7]} animationRange={1} />,
-  document.body
-)
+class Index extends Component {
+  // provide reference to store actions to all child objects
+  getChildContext () { return { actions: store } }
+
+  componentDidMount () { this.unsubscribe = store(state => this.setState(state)) }
+
+  render (props, { axes }) {
+    if (!axes) return null
+    return <Graph axes={axes} />
+  }
+}
+
+render(<Index />, document.body)
