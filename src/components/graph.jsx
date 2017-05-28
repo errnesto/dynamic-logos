@@ -11,7 +11,7 @@ export default class Graph extends Component {
       <Sectors center={[15, 15]}
         values={values}
         valueRange={valueRange}
-        animationOffset={1} />
+        animationOffset={2} />
 
       { Object.entries(axes).map(([axis, { name, value }]) =>
         <div>
@@ -21,7 +21,7 @@ export default class Graph extends Component {
             value={value}
             min={valueRange[0]}
             max={valueRange[1]}
-            step='1'
+            step='2'
             onInput={e => { actions.setAxisValue({ axis, value: e.target.value }) }} />
         </div>
       )}

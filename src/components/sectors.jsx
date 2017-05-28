@@ -6,21 +6,22 @@ import Chroma from 'chroma-js'
 export default class Sectors extends Component {
   static TWO_PI = 2 * Math.PI
   static colorScale = Chroma.scale([
-    'FFFFFF',
-    'FEF5E2',
-    'FED89A',
-    'FEC349',
-    '86D0CB',
-    '38B7A8',
-    '828BBF',
-    '46558B',
-    '29255C'
-  ])
+    '#ffffff',
+    '#ffe8c3',
+    '#ffd283',
+    '#e3c25f',
+    '#97bc8b',
+    '#52aead',
+    '#818abf',
+    '#6f79ae',
+    '#5c689d'
+  ]).mode('hsl')
 
   constructor (props) {
     super()
-    this.state.values = props.values.map((value, index) =>
-                                         value + index * 1 / props.values.length)
+    // add some offset to values based on index
+    // so they dont move all at the same time
+    this.state.values = props.values.map((value, index) => value + index * 0.3)
   }
 
   componentDidMount () {
@@ -30,12 +31,14 @@ export default class Sectors extends Component {
 
   animate = (timestamp) => {
     const SPEED = 2000
-    const diff = (timestamp - this.lastTimestamp || 0) / SPEED
-    this.lastTimestamp = timestamp
-
     const minValue = this.props.valueRange[0]
     const maxValue = this.props.valueRange[1]
     const animationOffset = this.props.animationOffset
+    let diff = (timestamp - this.lastTimestamp || 0) / SPEED
+    // When in the background browsers won't execude requestAnimationFrame
+    // so diff can get pretty big before the animation direction changes
+    if (diff > 1) diff = 1
+    this.lastTimestamp = timestamp
 
     const values = this.state.values.map((value, index) => {
       let offset
