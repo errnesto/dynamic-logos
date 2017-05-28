@@ -18,8 +18,7 @@ module.exports = {
             presets: ['env'],
             plugins: [
               [require('babel-plugin-transform-react-jsx'), { 'pragma': 'h' }],
-              require('babel-plugin-transform-class-properties'),
-              require('babel-plugin-transform-function-bind')
+              require('babel-plugin-transform-class-properties')
             ],
             cacheDirectory: true
           }
