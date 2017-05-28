@@ -6,15 +6,15 @@ import Chroma from 'chroma-js'
 export default class Sectors extends Component {
   static TWO_PI = 2 * Math.PI
   static colorScale = Chroma.scale([
-    '#ffffff',
-    '#ffe8c3',
-    '#ffd283',
-    '#e3c25f',
-    '#97bc8b',
-    '#52aead',
-    '#818abf',
-    '#6f79ae',
-    '#5c689d'
+    'FFFFFF',
+    'FEF5E2',
+    'FED89A',
+    'FEC349',
+    '86D0CB',
+    '38B7A8',
+    '828BBF',
+    '46558B',
+    '29255C'
   ]).mode('hsl')
 
   constructor (props) {
