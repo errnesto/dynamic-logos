@@ -2,6 +2,7 @@
 import { h, Component } from 'preact'
 import Sector from 'paths-js/sector'
 import Chroma from 'chroma-js'
+import styles from '~/components/sectors.sass'
 
 const range = ([ from, to ]) => {
   let range = Array(to - from + 1).fill()
@@ -83,7 +84,7 @@ export default class Sectors extends Component {
       color: this.colorScale(value)
     }))
 
-    return <svg width='500' height='500' viewBox='0 0 30 30'>
+    return <svg className={styles.sectors} viewBox='0 0 30 30'>
       { range(valueRange).map(value =>
         <circle cx={center[0]} cy={center[1]}
           r={value}

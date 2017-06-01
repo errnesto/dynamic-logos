@@ -2,6 +2,7 @@
 import { h, render, Component } from 'preact'
 import Graph from '~/components/graph.jsx'
 import store from '~/store.js'
+import _ from '~/main.sass' // eslint-disable-line no-unused-vars
 
 class Index extends Component {
   // provide reference to store actions to all child objects

@@ -1,5 +1,12 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+const createIndexHtml = new HtmlWebpackPlugin()
+const extractSass = new ExtractTextPlugin({
+  filename: '[name].css',
+  disable: process.env.NODE_ENV === 'development'
+})
 
 module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
@@ -23,6 +30,17 @@ module.exports = {
             cacheDirectory: true
           }
         }
+      },
+      {
+        test: /\.sass/,
+        use: extractSass.extract({
+          use: [
+            { loader: 'css-loader', options: { modules: true } },
+            { loader: 'sass-loader' }
+          ],
+          // use style-loader in development
+          fallback: 'style-loader'
+        })
       }
     ]
   },
@@ -31,5 +49,5 @@ module.exports = {
       '~': path.resolve(__dirname, 'src')
     }
   },
-  plugins: [new HtmlWebpackPlugin()]
+  plugins: [createIndexHtml, extractSass]
 }
