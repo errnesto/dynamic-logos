@@ -27,50 +27,58 @@ export default class Sectors extends Component {
 
     // add some offset to values based on index
     // so they dont move all at the same time
-    this.state.values = props.values.map((value, index) => value - 1 + index * 0.3)
+    this.state.variatedValues = props.values.map((value, index) => value - 1 + index * 0.3)
   }
 
   componentDidMount () {
-    this.animationMoveOutwards = []
+    this.animationIsMovingOutwards = []
     window.requestAnimationFrame(this.animate)
   }
 
   animate = (timestamp) => {
-    const SPEED = 2000
-    const minValue = this.props.valueRange[0]
-    const maxValue = this.props.valueRange[1]
-    const animationOffset = this.props.animationOffset
-    const diff = (timestamp - this.lastTimestamp || 0) / SPEED
+    const REDUCE_SPEED = 1500
+    const REDUCE_BOUND_EFFECT = 2
+    const minimum = this.props.valueRange[0]
+    const maximum = this.props.valueRange[1]
+    const variation = this.props.variation
+
+    const step = (timestamp - this.lastTimestamp || 0) / REDUCE_SPEED
     this.lastTimestamp = timestamp
 
-    const values = this.state.values.map((value, index) => {
-      let offset
-      if (this.animationMoveOutwards[index]) {
-        const ciel = Math.min(this.props.values[index] + animationOffset, maxValue)
-        const missing = ciel - value
-        const isFarAway = missing > animationOffset * 2
-        offset = isFarAway ? diff * (missing + 1) : diff
-        if (missing <= 0) this.animationMoveOutwards[index] = false
-      } else {
-        const floor = Math.max(this.props.values[index] - animationOffset, minValue)
-        const missing = value - floor
-        const isFarAway = missing > animationOffset * 2
-        offset = isFarAway ? diff * (missing + 1) * -1 : diff * -1
-        if (missing <= 0) this.animationMoveOutwards[index] = true
+    const variatedValues = this.state.variatedValues.map((variatedValue, index) => {
+      const isMovingOutwards = this.animationIsMovingOutwards[index]
+
+      // if the animation moves inwards just invert all the values
+      // so we can use the same instructions
+      if (!isMovingOutwards) variatedValue *= -1
+      const maxValue = isMovingOutwards ? maximum : minimum * -1
+      const orgValue = isMovingOutwards ? this.props.values[index]
+                                        : this.props.values[index] * -1
+
+      const maxVariation = Math.min(orgValue + variation, maxValue)
+      let leeway = maxVariation - variatedValue + 1
+      let newVariatedValue = variatedValue + step
+      newVariatedValue = variatedValue + step * leeway / REDUCE_BOUND_EFFECT
+
+      if (newVariatedValue > maxValue) newVariatedValue = maxValue
+      if (newVariatedValue >= maxVariation) {
+        this.animationIsMovingOutwards[index] = !isMovingOutwards
       }
-      return value + offset
+
+      return isMovingOutwards ? newVariatedValue : newVariatedValue * -1
     })
-    this.setState({ values }, () => { window.requestAnimationFrame(this.animate) })
+
+    this.setState({ variatedValues }, () => { window.requestAnimationFrame(this.animate) })
   }
 
-  render ({ center, values, valueRange }, { values: animatedValues }) {
-    const parts = animatedValues.map((value, index) => ({
+  render ({ center, values, valueRange }, { variatedValues }) {
+    const parts = variatedValues.map((value, index) => ({
       path: Sector({
         center: center,
         r: 0,
         R: value,
-        start: Sectors.TWO_PI * index / animatedValues.length,
-        end: Sectors.TWO_PI * (index + 1) / animatedValues.length
+        start: Sectors.TWO_PI * index / variatedValues.length,
+        end: Sectors.TWO_PI * (index + 1) / variatedValues.length
       }).path.print(),
       color: this.colorScale(value)
     }))

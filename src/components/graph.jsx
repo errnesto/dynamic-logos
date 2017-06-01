@@ -11,7 +11,7 @@ export default class Graph extends Component {
       <Sectors center={[15, 15]}
         values={values}
         valueRange={valueRange}
-        animationOffset={2} />
+        variation={2} />
 
       { Object.entries(axes).map(([axis, { name, value }]) =>
         <div>
