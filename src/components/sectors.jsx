@@ -11,6 +11,7 @@ const range = ([ from, to ]) => {
 
 export default class Sectors extends Component {
   static TWO_PI = 2 * Math.PI
+  static CENTER = [10, 10]
 
   constructor (props) {
     super()
@@ -72,10 +73,10 @@ export default class Sectors extends Component {
     this.setState({ variatedValues }, () => { window.requestAnimationFrame(this.animate) })
   }
 
-  render ({ center, values, valueRange }, { variatedValues }) {
+  render ({ values, valueRange }, { variatedValues }) {
     const parts = variatedValues.map((value, index) => ({
       path: Sector({
-        center: center,
+        center: Sectors.CENTER,
         r: 0,
         R: value,
         start: Sectors.TWO_PI * index / variatedValues.length,
@@ -84,9 +85,9 @@ export default class Sectors extends Component {
       color: this.colorScale(value)
     }))
 
-    return <svg className={styles.sectors} viewBox='0 0 30 30'>
+    return <svg class={styles.sectors} viewBox='0 0 20 20'>
       { range(valueRange).map(value =>
-        <circle cx={center[0]} cy={center[1]}
+        <circle cx={Sectors.CENTER[0]} cy={Sectors.CENTER[1]}
           r={value}
           fill='none'
           stroke-width='0.06'

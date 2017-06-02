@@ -2,7 +2,7 @@
 import { h, render, Component } from 'preact'
 import Graph from '~/components/graph.jsx'
 import store from '~/store.js'
-import _ from '~/main.sass' // eslint-disable-line no-unused-vars
+import styles from '~/index.sass'
 
 class Index extends Component {
   // provide reference to store actions to all child objects
@@ -12,7 +12,7 @@ class Index extends Component {
 
   render (props, { axes }) {
     if (!axes) return null
-    return <Graph axes={axes} valueRange={[0, 8]} />
+    return <Graph class={styles.graph} axes={axes} valueRange={[0, 8]} />
   }
 }
 
