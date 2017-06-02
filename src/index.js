@@ -12,7 +12,7 @@ class Index extends Component {
 
   render (props, { axes }) {
     if (!axes) return null
-    return <Graph class={styles.graph} axes={axes} valueRange={[0, 8]} />
+    return <Graph class={styles.graph} axes={axes} valueRange={[0,8]} />
   }
 }
 

@@ -33,6 +33,8 @@ export default class Graph extends Component {
 
   render ({ class: classNames, axes, valueRange }, { width, height }, { actions }) {
     const values = Object.values(axes).map(axis => axis.value)
+    const RotationStep = 360 / values.length - 90 - 360 / (values.length * 2)
+    const rangeSize = valueRange[1] - valueRange[0]
 
     return <div class={`${styles.graph} ${classNames}`}
       ref={graph => { this.graphElement = graph }}>
@@ -44,7 +46,8 @@ export default class Graph extends Component {
           style={{
             top: height / 2,
             left: width / 2,
-            transform: `rotate(${(index + 1) * 360 / 6 - (90 + 360 / 12)}deg)`
+            transform: `rotate(${(index + 1) * RotationStep}deg)`,
+            width: `${(rangeSize / 2) * 10}%`
           }}>
 
           <input id={axis}
