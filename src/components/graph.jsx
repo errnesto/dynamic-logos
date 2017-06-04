@@ -33,7 +33,9 @@ export default class Graph extends Component {
 
   render ({ class: classNames, axes, valueRange }, { width, height }, { actions }) {
     const values = Object.values(axes).map(axis => axis.value)
-    const RotationStep = 360 / values.length - 90 - 360 / (values.length * 2)
+    const numberOfAxis = values.length
+    const rotationStep = (360 / numberOfAxis)
+    const rotationOffset = -90 - 360 / (values.length * 2)
     const rangeSize = valueRange[1] - valueRange[0]
 
     return <div class={`${styles.graph} ${classNames}`}
@@ -46,7 +48,7 @@ export default class Graph extends Component {
           style={{
             top: height / 2,
             left: width / 2,
-            transform: `rotate(${(index + 1) * RotationStep}deg)`,
+            transform: `rotate(${(index + 1) * rotationStep + rotationOffset}deg)`,
             width: `${(rangeSize / 2) * 10}%`
           }}>
 
@@ -58,7 +60,10 @@ export default class Graph extends Component {
             max={valueRange[1]}
             step='2'
             onInput={e => { actions.setAxisValue({ axis, value: e.target.value }) }} />
-          <label for={axis}>{ name }</label>
+          <label for={axis}
+            style={{ transform: `rotate(${(index >= numberOfAxis / 2) ? 180 : 0}deg)` }}>
+            { name }
+          </label>
         </div>
       )}
     </div>
