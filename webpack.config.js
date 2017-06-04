@@ -39,7 +39,7 @@ module.exports = {
             { loader: 'postcss-loader',
               options: {
                 plugins: [
-                  // require('cssnano'),
+                  require('cssnano'),
                   require('postcss-input-range'),
                   require('autoprefixer')
                 ]
