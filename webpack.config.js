@@ -35,7 +35,16 @@ module.exports = {
         test: /\.sass/,
         use: extractSass.extract({
           use: [
-            { loader: 'css-loader', options: { modules: true } },
+            { loader: 'css-loader', options: { modules: true, importLoaders: 2 } },
+            { loader: 'postcss-loader',
+              options: {
+                plugins: [
+                  // require('cssnano'),
+                  require('postcss-input-range'),
+                  require('autoprefixer')
+                ]
+              }
+            },
             { loader: 'sass-loader' }
           ],
           // use style-loader in development
