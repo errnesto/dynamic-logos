@@ -1,7 +1,8 @@
 node_modules
 npm-debug.log
 .DS_Store
-/dst
-/scripts/data/
-!/scripts/data/logoData.example.csv
-!/scripts/data/logoImages.example.csv
+dst/
+src/assets/
+scripts/data/*
+!scripts/data/logoData.example.csv
+!scripts/data/logoImages.example.csv

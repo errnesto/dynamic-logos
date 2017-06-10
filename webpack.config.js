@@ -1,8 +1,12 @@
 const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const createIndexHtml = new HtmlWebpackPlugin()
+const copyAssets = new CopyWebpackPlugin([
+  { from: 'src/assets/img', to: 'img' }
+])
 const extractSass = new ExtractTextPlugin({
   filename: '[name].css',
   disable: process.env.NODE_ENV === 'development'
@@ -58,5 +62,5 @@ module.exports = {
       '~': path.resolve(__dirname, 'src')
     }
   },
-  plugins: [createIndexHtml, extractSass]
+  plugins: [createIndexHtml, extractSass, copyAssets]
 }

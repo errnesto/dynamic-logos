@@ -15,7 +15,7 @@ const Logos = ({ examples, filter, filterVariation }, { actions }) => {
     { filteredExamples.map(example =>
       <li key={example.id}>
         <h2>{example.name}</h2>
-        <img src={example.images[0]} />
+        <img src={`img/${example.images[0]}`} />
       </li>
     )}
   </ul>
