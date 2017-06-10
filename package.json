@@ -7,6 +7,7 @@
     "dev": "webpack-dev-server --hot --progress",
     "build": "webpack",
     "deploy": "sh deploy.sh",
+    "parse": "node scripts/parseTables.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +28,7 @@
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.5.1",
+    "babyparse": "^0.4.6",
     "css-loader": "^0.28.4",
     "cssnano": "^3.10.0",
     "extract-text-webpack-plugin": "^2.1.0",
