@@ -2,7 +2,7 @@
 import { h, Component } from 'preact'
 import Sector from 'paths-js/sector'
 import Chroma from 'chroma-js'
-import styles from '~/components/sectors.sass'
+import styles from './sectors.sass'
 
 const range = ([ from, to ]) => {
   let range = Array(to - from + 1).fill()

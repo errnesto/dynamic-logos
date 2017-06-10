@@ -1,7 +1,7 @@
 /** @jsx h */
 import { h, Component } from 'preact'
-import Sectors from '~/components/sectors.jsx'
-import styles from '~/components/graph.sass'
+import Sectors from './sectors.jsx'
+import styles from './graph.sass'
 
 const throttle = function (func, delay) {
   let block = false
@@ -31,7 +31,7 @@ export default class Graph extends Component {
     this.getSize()
   }
 
-  render ({ class: classNames, axes, valueRange }, { width, height }, { actions }) {
+  render ({ class: classNames, axes, valueRange, filterVariation }, { width, height }, { actions }) {
     const values = Object.values(axes).map(axis => axis.value)
     const numberOfAxis = values.length
     const rotationStep = (360 / numberOfAxis)
@@ -41,7 +41,7 @@ export default class Graph extends Component {
     return <div class={`${styles.graph} ${classNames}`}
       ref={graph => { this.graphElement = graph }}>
 
-      <Sectors values={values} valueRange={valueRange} variation={2} />
+      <Sectors values={values} valueRange={valueRange} variation={filterVariation} />
 
       { Object.entries(axes).map(([axis, { name, value }], index) =>
         <div class={styles.slider}
@@ -59,7 +59,9 @@ export default class Graph extends Component {
             min={valueRange[0]}
             max={valueRange[1]}
             step='2'
-            onInput={e => { actions.setAxisValue({ axis, value: e.target.value }) }} />
+            onInput={e => {
+              actions.setFilterValue({ filterKey: axis, value: e.target.value })
+            }} />
           <label for={axis}
             style={{ transform: `rotate(${(index >= numberOfAxis / 2) ? 180 : 0}deg)` }}>
             { name }
