@@ -3,11 +3,7 @@ import { h, Component } from 'preact'
 import Sector from 'paths-js/sector'
 import Chroma from 'chroma-js'
 import styles from './sectors.sass'
-
-const range = ([ from, to ]) => {
-  let range = Array(to - from + 1).fill()
-  return range.map((_, i) => from + i)
-}
+import { range } from '~/lib/helpers.js'
 
 export default class Sectors extends Component {
   static TWO_PI = 2 * Math.PI

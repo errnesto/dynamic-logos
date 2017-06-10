@@ -2,23 +2,7 @@
 import { h, Component } from 'preact'
 import Sectors from './sectors.jsx'
 import styles from './graph.sass'
-
-const throttle = function (func, delay) {
-  let block = false
-  let timeoutId
-
-  return function () {
-    if (timeoutId) clearTimeout(timeoutId)
-
-    if (block) {
-      timeoutId = setTimeout(() => { func() }, delay)
-    } else {
-      block = true
-      setTimeout(() => { block = false }, delay)
-      func()
-    }
-  }
-}
+import { throttle } from '~/lib/helpers.js'
 
 export default class Graph extends Component {
   getSize = () => {
