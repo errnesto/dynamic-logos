@@ -43,8 +43,9 @@ export default class Sectors extends Component {
     const minimum = this.props.valueRange[0]
     const maximum = this.props.valueRange[1]
     const variation = this.props.variation
+    const speed = REDUCE_SPEED / this.props.animationSpeed
 
-    const step = (timestamp - this.lastTimestamp || 0) / REDUCE_SPEED
+    const step = (timestamp - this.lastTimestamp || 0) / speed
     this.lastTimestamp = timestamp
 
     const variatedValues = this.state.variatedValues.map((variatedValue, index) => {

@@ -11,13 +11,17 @@ export default class Index extends Component {
 
   componentDidMount () { this.unsubscribe = store(state => this.setState(state)) }
 
-  render (props, { filter, filterVariation, examples }) {
+  render (props, { axes, filter, filterVariation, examples, selectedExample }) {
     if (!filter) return null
     return <div>
       <Graph class={styles.graph}
-        axes={filter}
+        axes={axes}
+        values={selectedExample ? selectedExample.values : filter}
         valueRange={[0, 8]}
-        filterVariation={filterVariation} />
+        filterVariation={selectedExample ? 0 : filterVariation}
+        showSliders={!selectedExample}
+        animationSpeed={selectedExample ? 10 : 1} />
+
       <Logos examples={examples} filter={filter} filterVariation={filterVariation} />
     </div>
   }

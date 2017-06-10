@@ -31,19 +31,25 @@ export default class Graph extends Component {
     this.getSize()
   }
 
-  render ({ class: classNames, axes, valueRange, filterVariation }, { width, height }, { actions }) {
-    const values = Object.values(axes).map(axis => axis.value)
-    const numberOfAxis = values.length
+  render ({ class: classNames, axes, values, valueRange, filterVariation, showSliders, animationSpeed },
+          { width, height },
+          { actions }) {
+    const valuePairs = Object.entries(values)
+    const fixValues = valuePairs.map(([, value]) => value)
+    const numberOfAxis = fixValues.length
     const rotationStep = (360 / numberOfAxis)
-    const rotationOffset = -90 - 360 / (values.length * 2)
+    const rotationOffset = -90 - 360 / (fixValues.length * 2)
     const rangeSize = valueRange[1] - valueRange[0]
 
     return <div class={`${styles.graph} ${classNames}`}
       ref={graph => { this.graphElement = graph }}>
 
-      <Sectors values={values} valueRange={valueRange} variation={filterVariation} />
+      <Sectors values={fixValues}
+        valueRange={valueRange}
+        variation={filterVariation}
+        animationSpeed={animationSpeed} />
 
-      { Object.entries(axes).map(([axis, { name, value }], index) =>
+      { valuePairs.map(([axis, value], index) =>
         <div class={styles.slider}
           style={{
             top: height / 2,
@@ -52,19 +58,19 @@ export default class Graph extends Component {
             width: `${(rangeSize / 2) * 10}%`
           }}>
 
-          <input id={axis}
-            class={styles[`color-${value}`]}
+          { showSliders && <input id={axis}
+            class={`${styles[`color-${value}`]}`}
             type='range'
             value={value}
             min={valueRange[0]}
             max={valueRange[1]}
-            step='2'
+            step='1'
             onInput={e => {
               actions.setFilterValue({ filterKey: axis, value: e.target.value })
-            }} />
+            }} /> }
           <label for={axis}
             style={{ transform: `rotate(${(index >= numberOfAxis / 2) ? 180 : 0}deg)` }}>
-            { name }
+            { axes[axis] }
           </label>
         </div>
       )}

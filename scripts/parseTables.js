@@ -11,11 +11,11 @@ const res = data.map(logo => ({
   id: logo.ID,
   name: logo.Unternehmen,
   values: {
-    color: logo.Farbe,
-    wording: logo.Sprache,
-    images: logo.Bildwelt,
-    form: logo.Form,
-    font: logo.Typografie
+    color: +logo.Farbe,
+    wording: +logo.Sprache,
+    images: +logo.Bildwelt,
+    form: +logo.Form,
+    font: +logo.Typografie
   },
   images: images.filter(image => image.ID === logo.ID)
                 .map(image => image.Bild)
