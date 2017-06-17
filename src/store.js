@@ -9,8 +9,8 @@ const initialState = {
     form: 'Form',
     font: 'Typo'
   },
-  filter: { color: 2, wording: 2, images: 2, form: 2, font: 2 },
-  filterVariation: 2,
+  filter: { color: 3, wording: 3, images: 3, form: 3, font: 3 },
+  filterVariation: 3,
   selectedExample: null,
   examples: examples
 }

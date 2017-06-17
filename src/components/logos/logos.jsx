@@ -6,10 +6,9 @@ import DynamicImage from './dynamicImage.jsx'
 const Logos = ({ examples, selectedExample, filter, filterVariation }, { actions }) => {
   const filteredExamples = examples.filter(example =>
     Object.entries(filter).every(([filterKey, filterValue]) => {
-      const value = example.values[filterKey]
-      return (value >= filterValue - filterVariation &&
-             value <= filterValue + filterVariation) ||
-             value === -1
+      const value = example.values[filterKey] >= 0 ? example.values[filterKey] : 0
+      return value >= filterValue - filterVariation &&
+             value <= filterValue + filterVariation
     })
   )
 

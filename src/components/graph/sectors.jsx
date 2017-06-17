@@ -61,6 +61,7 @@ export default class Sectors extends Component {
       if (newVariatedValue > maxValue) newVariatedValue = maxValue
       if (newVariatedValue >= maxVariation) {
         this.animationIsMovingOutwards[index] = !isMovingOutwards
+        newVariatedValue = variatedValue
       }
 
       return isMovingOutwards ? newVariatedValue : newVariatedValue * -1
