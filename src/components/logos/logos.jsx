@@ -1,9 +1,9 @@
 /** @jsx h */
 import { h } from 'preact'
 import styles from './logos.sass'
-console.log(styles)
+import DynamicImage from './dynamicImage.jsx'
 
-const Logos = ({ examples, filter, filterVariation }, { actions }) => {
+const Logos = ({ examples, selectedExample, filter, filterVariation }, { actions }) => {
   const filteredExamples = examples.filter(example =>
     Object.entries(filter).every(([filterKey, filterValue]) => {
       const value = example.values[filterKey] >= 0 ? example.values[filterKey] : 0
@@ -19,7 +19,8 @@ const Logos = ({ examples, filter, filterVariation }, { actions }) => {
         onMouseLeave={actions.deselectExample}>
         <div class={styles.inner}>
           <h2>{example.name}</h2>
-          <img src={`img/${example.images[0]}`} />
+          <DynamicImage images={example.images}
+            animateImages={selectedExample && example.id === selectedExample.id} />
         </div>
       </li>
     )}

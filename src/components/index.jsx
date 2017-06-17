@@ -22,7 +22,10 @@ export default class Index extends Component {
         showSliders={!selectedExample}
         animationSpeed={selectedExample ? 10 : 1} />
 
-      <Logos examples={examples} filter={filter} filterVariation={filterVariation} />
+      <Logos examples={examples}
+        filter={filter}
+        filterVariation={filterVariation}
+        selectedExample={selectedExample} />
     </div>
   }
 }
