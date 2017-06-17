@@ -51,13 +51,12 @@ export default class Sectors extends Component {
       // so we can use the same instructions
       if (!isMovingOutwards) variatedValue *= -1
       const maxValue = isMovingOutwards ? maximum : minimum * -1
-      const orgValue = isMovingOutwards ? this.props.values[index]
-                                        : this.props.values[index] * -1
+      const orgValue = this.props.values[index] >= 0 ? this.props.values[index] : 0
+      const value = isMovingOutwards ? orgValue : orgValue * -1
 
-      const maxVariation = Math.min(orgValue + variation, maxValue)
+      const maxVariation = Math.min(value + variation, maxValue)
       let leeway = maxVariation - variatedValue + 1
-      let newVariatedValue = variatedValue + step
-      newVariatedValue = variatedValue + step * leeway / REDUCE_BOUND_EFFECT
+      let newVariatedValue = variatedValue + step * leeway / REDUCE_BOUND_EFFECT
 
       if (newVariatedValue > maxValue) newVariatedValue = maxValue
       if (newVariatedValue >= maxVariation) {
