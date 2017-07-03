@@ -17,7 +17,7 @@ export default class Index extends Component {
       <Graph class={styles.graph}
         axes={axes}
         values={selectedExample ? selectedExample.values : filter}
-        valueRange={[0, 8]}
+        valueRange={[0, 6]}
         filterVariation={selectedExample ? 0 : filterVariation}
         showSliders={!selectedExample}
         animationSpeed={selectedExample ? 10 : 1} />

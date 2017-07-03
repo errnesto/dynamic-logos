@@ -4,13 +4,14 @@ import examples from '~/assets/data/logos.json'
 const initialState = {
   axes: {
     color: 'Farbe',
-    wording: 'Sprache',
+    wording: 'Text',
     images: 'Bildwelt',
-    form: 'Form',
-    font: 'Typo'
+    alignment: 'Ausrichtung',
+    font: 'Typo',
+    form: 'Form'
   },
-  filter: { color: 3, wording: 3, images: 3, form: 3, font: 3 },
-  filterVariation: 3,
+  filter: { color: 3, wording: 3, images: 3, alignment: 3, font: 3, form: 3 },
+  filterVariation: 2,
   selectedExample: null,
   examples: examples
 }
