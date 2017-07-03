@@ -10,7 +10,7 @@ const initialState = {
     font: 'Typo',
     form: 'Form'
   },
-  filter: { color: 3, wording: 3, images: 3, alignment: 3, font: 3, form: 3 },
+  filter: { color: 2, wording: 2, images: 2, alignment: 2, font: 2, form: 2 },
   filterVariation: 2,
   selectedExample: null,
   examples: examples

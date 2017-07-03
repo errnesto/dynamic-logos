@@ -39,7 +39,7 @@ export default class Graph extends Component {
             top: height / 2,
             left: width / 2,
             transform: `rotate(${(index + 1) * rotationStep + rotationOffset}deg)`,
-            width: `${(rangeSize / 2) * 10}%`
+            width: `${(rangeSize / 2) * 14}%`
           }}>
 
           { showSliders && <input id={axis}

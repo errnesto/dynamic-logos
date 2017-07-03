@@ -7,7 +7,7 @@ import { range } from '~/lib/helpers.js'
 
 export default class Sectors extends Component {
   static TWO_PI = 2 * Math.PI
-  static CENTER = [10, 10]
+  static CENTER = [7, 7]
 
   constructor (props) {
     super()
@@ -82,7 +82,7 @@ export default class Sectors extends Component {
       color: this.colorScale(value)
     }))
 
-    return <svg class={styles.sectors} viewBox='0 0 20 20'>
+    return <svg class={styles.sectors} viewBox='0 0 14 14'>
       { range(valueRange).map(value =>
         <circle cx={Sectors.CENTER[0]} cy={Sectors.CENTER[1]}
           r={value}
