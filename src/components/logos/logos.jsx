@@ -1,5 +1,6 @@
 /** @jsx h */
 import { h } from 'preact'
+import { Link } from 'react-router-dom'
 import styles from './logos.sass'
 import DynamicImage from './dynamicImage.jsx'
 
@@ -17,11 +18,11 @@ const Logos = ({ examples, selectedExample, filter, filterVariation }, { actions
       <li key={example.id}
         onMouseEnter={() => { actions.selectExample(example) }}
         onMouseLeave={actions.deselectExample}>
-        <div class={styles.inner}>
+        <Link to={example.id} class={styles.inner}>
           <h2>{example.name}</h2>
           <DynamicImage images={example.images}
             animateImages={selectedExample && example.id === selectedExample.id} />
-        </div>
+        </Link>
       </li>
     )}
   </ul>

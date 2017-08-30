@@ -92,7 +92,7 @@ export default class Sectors extends Component {
       )}
 
       { parts.map(({ path, color }) =>
-        <path d={path} fill={color} stroke-width='0.06' stroke='white' />
+        <path d={path} fill={color} />
       )}
     </svg>
   }
