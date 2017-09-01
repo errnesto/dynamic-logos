@@ -40,7 +40,13 @@ module.exports = {
         test: /\.sass/,
         use: extractSass.extract({
           use: [
-            { loader: 'css-loader', options: { modules: true, importLoaders: 2 } },
+            { loader: 'css-loader',
+              options: {
+                modules: true,
+                importLoaders: 2,
+                localIdentName: '[name]__[local]--[hash:base64:5]'
+              }
+            },
             { loader: 'postcss-loader',
               options: {
                 plugins: [
