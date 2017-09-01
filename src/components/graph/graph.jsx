@@ -27,22 +27,24 @@ export default class Graph extends Component {
           { width, height },
           { actions }) {
     const axesArray = Object.entries(axes)
-    const values = axesArray.map(([key, axis]) => customValues[key] || axis.filter.value)
     const numberOfAxes = axesArray.length
     const rotationStep = (360 / numberOfAxes)
     const rotationOffset = -90 - 360 / (numberOfAxes * 2)
     const rangeSize = valueRange[1] - valueRange[0]
+    const activeValues = axesArray.map(([key, axis]) =>
+      customValues[key] || (axis.filter.isActive ? axis.filter.value : null))
+    const allValues = axesArray.map(([key, axis]) =>
+      customValues[key] || axis.filter.value)
 
     return <div class={`${styles.graph} ${classNames}`}
       ref={graph => { this.graphElement = graph }}>
 
-      <Sectors values={values}
+      <Sectors values={activeValues}
         valueRange={valueRange}
         variation={filterVariation}
         animationSpeed={animationSpeed} />
 
       { axesArray.map(([key, axis], index) => {
-        const value = values[index]
         const rotatationStyle = {
           transform: `rotate(${(index >= numberOfAxes / 2) ? 180 : 0}deg)`
         }
@@ -56,9 +58,9 @@ export default class Graph extends Component {
           }}>
 
           { showInputs && <input id={axis}
-            class={`${styles.axisSlider} ${styles[`color-${value}`]}`}
+            class={`${styles.axisSlider} ${styles[`color-${activeValues[index]}`]}`}
             type='range'
-            value={value}
+            value={allValues[index]}
             min={valueRange[0]}
             max={valueRange[1]}
             step='1'

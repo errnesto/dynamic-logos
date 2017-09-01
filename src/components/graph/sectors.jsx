@@ -25,7 +25,8 @@ export default class Sectors extends Component {
 
     // add some offset to values based on index
     // so they dont move all at the same time
-    this.state.variatedValues = props.values.map((value, index) => value - 1 + index * 0.3)
+    this.state.variatedValues = props.values.map((value, index) =>
+      value === null ? value : value - 1 + index * 0.3)
   }
 
   componentDidMount () {
@@ -45,6 +46,8 @@ export default class Sectors extends Component {
     this.lastTimestamp = timestamp
 
     const variatedValues = this.state.variatedValues.map((variatedValue, index) => {
+      if (this.props.values[index] === null) return null
+
       const isMovingOutwards = this.animationIsMovingOutwards[index]
 
       // if the animation moves inwards just invert all the values
@@ -71,7 +74,7 @@ export default class Sectors extends Component {
   }
 
   render ({ valueRange }, { variatedValues }) {
-    const parts = variatedValues.map((value, index) => ({
+    const parts = variatedValues.map((value, index) => value !== null ? {
       path: Sector({
         center: Sectors.CENTER,
         r: 0,
@@ -80,7 +83,7 @@ export default class Sectors extends Component {
         end: Sectors.TWO_PI * (index + 1) / variatedValues.length
       }).path.print(),
       color: this.colorScale(value)
-    }))
+    } : false).filter(visible => visible)
 
     return <svg class={styles.sectors} viewBox='0 0 14 14'>
       { range(valueRange).map(value =>

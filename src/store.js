@@ -5,27 +5,27 @@ const initialState = {
   axes: {
     color: {
       title: 'Farbe',
-      filter: { isActive: true, value: 2 }
+      filter: { isActive: false, value: 2 }
     },
     wording: {
       title: 'Text',
-      filter: { isActive: true, value: 2 }
+      filter: { isActive: false, value: 2 }
     },
     images: {
       title: 'Bildwelt',
-      filter: { isActive: true, value: 2 }
+      filter: { isActive: false, value: 2 }
     },
     alignment: {
       title: 'Ausrichtung',
-      filter: { isActive: true, value: 2 }
+      filter: { isActive: false, value: 2 }
     },
     font: {
       title: 'Typo',
-      filter: { isActive: true, value: 2 }
+      filter: { isActive: false, value: 2 }
     },
     form: {
       title: 'Form',
-      filter: { isActive: true, value: 2 }
+      filter: { isActive: false, value: 2 }
     }
   },
   filterVariation: 2,
