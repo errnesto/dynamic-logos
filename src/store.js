@@ -3,25 +3,46 @@ import examples from '~/assets/data/logos.json'
 
 const initialState = {
   axes: {
-    color: 'Farbe',
-    wording: 'Text',
-    images: 'Bildwelt',
-    alignment: 'Ausrichtung',
-    font: 'Typo',
-    form: 'Form'
+    color: {
+      title: 'Farbe',
+      filter: { isActive: true, value: 2 }
+    },
+    wording: {
+      title: 'Text',
+      filter: { isActive: true, value: 2 }
+    },
+    images: {
+      title: 'Bildwelt',
+      filter: { isActive: true, value: 2 }
+    },
+    alignment: {
+      title: 'Ausrichtung',
+      filter: { isActive: true, value: 2 }
+    },
+    font: {
+      title: 'Typo',
+      filter: { isActive: true, value: 2 }
+    },
+    form: {
+      title: 'Form',
+      filter: { isActive: true, value: 2 }
+    }
   },
-  filter: { color: 2, wording: 2, images: 2, alignment: 2, font: 2, form: 2 },
   filterVariation: 2,
   selectedExample: null,
   examples: examples
 }
 const actions = {
-  setFilterValue: (state, { filterKey, value }) => {
-    state.filter[filterKey] = +value
-    const newFilter = state.filter
+  setFilter: (state, { filterKey, value, isActive = true }) => {
+    const updatedAxes = state.axes
+    updatedAxes[filterKey].filter = {
+      isActive,
+      value: +value || state.axes[filterKey].filter.value
+    }
+
     return {
       ...state,
-      filter: newFilter,
+      axes: updatedAxes,
       selectedExample: null
     }
   },

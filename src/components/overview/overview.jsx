@@ -1,22 +1,22 @@
 /** @jsx h */
 import { h } from 'preact'
+import mapValues from 'lodash/mapValues'
 import Graph from '~/components/graph/graph.jsx'
 import Logos from '~/components/logos/logos.jsx'
 import styles from './overview.sass'
 
-const Overview = ({ axes, filter, filterVariation, examples, selectedExample }) => {
-  if (!filter) return null
+const Overview = ({ axes, filterVariation, examples, selectedExample }) => {
   return <div>
     <Graph class={styles.graph}
       axes={axes}
-      values={selectedExample ? selectedExample.values : filter}
+      customValues={selectedExample ? selectedExample.values : {}}
       valueRange={[0, 6]}
       filterVariation={selectedExample ? 0 : filterVariation}
-      showSliders={!selectedExample}
+      showInputs={!selectedExample}
       animationSpeed={selectedExample ? 10 : 1} />
 
     <Logos examples={examples}
-      filter={filter}
+      filter={mapValues(axes, axis => axis.filter)}
       filterVariation={filterVariation}
       selectedExample={selectedExample} />
   </div>

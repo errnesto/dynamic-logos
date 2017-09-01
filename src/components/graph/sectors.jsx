@@ -70,7 +70,7 @@ export default class Sectors extends Component {
     this.setState({ variatedValues }, () => { window.requestAnimationFrame(this.animate) })
   }
 
-  render ({ values, valueRange }, { variatedValues }) {
+  render ({ valueRange }, { variatedValues }) {
     const parts = variatedValues.map((value, index) => ({
       path: Sector({
         center: Sectors.CENTER,

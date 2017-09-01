@@ -10,31 +10,44 @@ export default class Graph extends Component {
     this.setState({ width, height })
   }
 
+  handleAxisValueChange = (axisKey) => (e) => {
+    this.context.actions.setFilter({ filterKey: axisKey, value: e.target.value })
+  }
+
+  handleToggleFilter = (axisKey) => (e) => {
+    this.context.actions.setFilter({ filterKey: axisKey, isActive: e.target.checked })
+  }
+
   componentDidMount () {
     window.addEventListener('resize', throttle(this.getSize, 100))
     this.getSize()
   }
 
-  render ({ class: classNames, axes, values, valueRange, filterVariation, showSliders, animationSpeed },
+  render ({ class: classNames, axes, customValues, valueRange, filterVariation, showInputs, animationSpeed },
           { width, height },
           { actions }) {
-    const valuePairs = Object.entries(values)
-    const fixValues = valuePairs.map(([, value]) => value)
-    const numberOfAxis = fixValues.length
-    const rotationStep = (360 / numberOfAxis)
-    const rotationOffset = -90 - 360 / (fixValues.length * 2)
+    const axesArray = Object.entries(axes)
+    const values = axesArray.map(([key, axis]) => customValues[key] || axis.filter.value)
+    const numberOfAxes = axesArray.length
+    const rotationStep = (360 / numberOfAxes)
+    const rotationOffset = -90 - 360 / (numberOfAxes * 2)
     const rangeSize = valueRange[1] - valueRange[0]
 
     return <div class={`${styles.graph} ${classNames}`}
       ref={graph => { this.graphElement = graph }}>
 
-      <Sectors values={fixValues}
+      <Sectors values={values}
         valueRange={valueRange}
         variation={filterVariation}
         animationSpeed={animationSpeed} />
 
-      { valuePairs.map(([axis, value], index) =>
-        <div class={styles.slider}
+      { axesArray.map(([key, axis], index) => {
+        const value = values[index]
+        const rotatationStyle = {
+          transform: `rotate(${(index >= numberOfAxes / 2) ? 180 : 0}deg)`
+        }
+
+        return <div class={styles.slider}
           style={{
             top: height / 2,
             left: width / 2,
@@ -42,22 +55,27 @@ export default class Graph extends Component {
             width: `${(rangeSize / 2) * 14}%`
           }}>
 
-          { showSliders && <input id={axis}
-            class={`${styles[`color-${value}`]}`}
+          { showInputs && <input id={axis}
+            class={`${styles.axisSlider} ${styles[`color-${value}`]}`}
             type='range'
             value={value}
             min={valueRange[0]}
             max={valueRange[1]}
             step='1'
-            onInput={e => {
-              actions.setFilterValue({ filterKey: axis, value: e.target.value })
-            }} /> }
-          <label for={axis}
-            style={{ transform: `rotate(${(index >= numberOfAxis / 2) ? 180 : 0}deg)` }}>
-            { axes[axis] }
-          </label>
+            onInput={this.handleAxisValueChange(key)} /> }
+          <div class={styles.labelWrapper} >
+            <label for={axis} style={rotatationStyle}>{ axis.title }</label>
+            { showInputs &&
+              <input type='checkbox'
+                checked={axis.filter.isActive}
+                class={styles.axisCheckbox}
+                style={rotatationStyle}
+                onChange={this.handleToggleFilter(key)} />
+            }
+          </div>
+
         </div>
-      )}
+      })}
     </div>
   }
 }
