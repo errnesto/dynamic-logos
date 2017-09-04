@@ -11,11 +11,11 @@ export default class Graph extends Component {
   }
 
   handleAxisValueChange = (axisKey) => (e) => {
-    this.context.actions.setFilter({ filterKey: axisKey, value: e.target.value })
+    this.context.actions.setAxisValue({ for: axisKey, to: e.target.value })
   }
 
   handleToggleFilter = (axisKey) => (e) => {
-    this.context.actions.setFilter({ filterKey: axisKey, isActive: e.target.checked })
+    this.context.actions.setAxisActiveState({ for: axisKey, to: e.target.checked })
   }
 
   componentDidMount () {

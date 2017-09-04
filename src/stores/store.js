@@ -53,12 +53,23 @@ const initialState = {
   examples: examples
 }
 const actions = {
-  setFilter: (state, { filterKey, value, isActive = true }) => {
+  setAxisValue: (state, { for: key, to: value }) => {
     const updatedAxes = state.axes
-    updatedAxes[filterKey].filter = {
-      isActive,
-      value: +value || state.axes[filterKey].filter.value
+    updatedAxes[key].filter = {
+      value: +value,
+      isActive: true
     }
+
+    return {
+      ...state,
+      axes: updatedAxes,
+      selectedExample: null
+    }
+  },
+
+  setAxisActiveState: (state, { for: key, to: activeState }) => {
+    const updatedAxes = state.axes
+    updatedAxes[key].filter.isActive = activeState
 
     return {
       ...state,
