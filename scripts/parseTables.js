@@ -7,11 +7,14 @@ const data = CSVParser.parseFiles(path.join(__dirname, '/data/logoData.csv'),
 const images = CSVParser.parseFiles(path.join(__dirname, '/data/logoImages.csv'),
                                     { header: true }).data
 
-console.log(data[0])
+console.log(data[193])
 
 const res = data.map(logo => ({
   id: logo.ID,
   name: logo.Unternehmen,
+  text: logo['Logo Beschreibung'],
+  industry: logo.Branche,
+  area: +(logo['Flächeninhalt'].replace(',', '.')),
   values: {
     color: +logo.Farbe,
     wording: +logo.Text,

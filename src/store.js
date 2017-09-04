@@ -16,7 +16,7 @@ const initialState = {
       filter: { isActive: false, value: 2 }
     },
     alignment: {
-      title: 'Ausrichtung',
+      title: 'Anordnung',
       filter: { isActive: false, value: 2 }
     },
     font: {
@@ -24,11 +24,31 @@ const initialState = {
       filter: { isActive: false, value: 2 }
     },
     form: {
-      title: 'Form',
+      title: 'Formwahrnehmung',
       filter: { isActive: false, value: 2 }
     }
   },
-  filterVariation: 2,
+  industries: [
+    'Hotel & Gastronomie',
+    'Tourismus',
+    'Museum & Kunst',
+    'Energie & Umwelt',
+    'Pharma & Gesundheit',
+    'Handwerk',
+    'Veranstaltungen',
+    'Theater & Musik',
+    'Technik & Telekommunikation',
+    'Medien',
+    'Beratung & Marketing',
+    'Design, Fotografie & Film',
+    'Forschung, Bildung & Entwicklung',
+    'Architektur & Konstruktion',
+    'Finanzen, Versicherungen & Immobilien',
+    'Handel',
+    'Textil & Bekleidung',
+    'Stiftungen & Sozialer / Öffentlicher Dienst'
+  ],
+  filterVariation: 1,
   selectedExample: null,
   examples: examples
 }

@@ -1,12 +1,15 @@
 /** @jsx h */
 import { h } from 'preact'
 import mapValues from 'lodash/mapValues'
+import Filter from '~/components/filter/filter.jsx'
 import Graph from '~/components/graph/graph.jsx'
 import Logos from '~/components/logos/logos.jsx'
 import styles from './overview.sass'
 
-const Overview = ({ axes, filterVariation, examples, selectedExample }) => {
+const Overview = ({ axes, filterVariation, industries, examples, selectedExample }) => {
   return <div>
+    <Filter industries={industries} />
+
     <Graph class={styles.graph}
       axes={axes}
       customValues={selectedExample ? selectedExample.values : {}}

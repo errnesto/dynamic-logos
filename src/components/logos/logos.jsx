@@ -5,6 +5,7 @@ import styles from './logos.sass'
 import DynamicImage from './dynamicImage.jsx'
 
 const Logos = ({ examples, selectedExample, filter, filterVariation }, { actions }) => {
+  console.log(examples[0])
   const filteredExamples = examples.filter(example =>
     Object.entries(filter).every(([filterKey, filter]) => {
       if (!filter.isActive) return true
