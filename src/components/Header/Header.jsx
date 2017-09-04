@@ -4,7 +4,7 @@ import styles from './Header.sass'
 
 const Header = () =>
   <div class={styles.header}>
-    Hallo
+    Verschiebe die Regler des Graphen
   </div>
 
 export default Header

@@ -13,14 +13,12 @@ export default class Sectors extends Component {
     super()
     this.colorScale = Chroma.scale([
       'FFFFFF',
-      'FEF5E2',
       'FED89A',
       'FEC349',
       '86D0CB',
       '38B7A8',
       '828BBF',
-      '46558B',
-      '29255C'
+      '46558B'
     ]).domain(range(props.valueRange))
 
     // add some offset to values based on index

@@ -24,7 +24,7 @@ const initialState = {
       filter: { isActive: false, value: 2 }
     },
     form: {
-      title: 'Formwahrnehmung',
+      title: 'Form',
       filter: { isActive: false, value: 2 }
     }
   },

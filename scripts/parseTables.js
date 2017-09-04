@@ -7,7 +7,7 @@ const data = CSVParser.parseFiles(path.join(__dirname, '/data/logoData.csv'),
 const images = CSVParser.parseFiles(path.join(__dirname, '/data/logoImages.csv'),
                                     { header: true }).data
 
-console.log(data[193])
+console.log(data[0])
 
 const res = data.map(logo => ({
   id: logo.ID,
@@ -21,7 +21,7 @@ const res = data.map(logo => ({
     images: +logo.Bildwelt,
     alignment: +logo.Anordnung,
     font: +logo.Typografie,
-    form: +logo.Formgebung
+    form: +logo.Formwahrnehmung
   },
   images: images.filter(image => image.ID === logo.ID)
                 .map(image => image.Bild)
