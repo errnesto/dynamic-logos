@@ -3,6 +3,7 @@ import { h, Component } from 'preact'
 import Sector from 'paths-js/sector'
 import Chroma from 'chroma-js'
 import styles from './Sectors.sass'
+import { graphColors } from '@lib/colors.sass'
 import { range } from '@lib/helpers.js'
 
 export default class Sectors extends Component {
@@ -11,15 +12,7 @@ export default class Sectors extends Component {
 
   constructor (props) {
     super()
-    this.colorScale = Chroma.scale([
-      'FFFFFF',
-      'FED89A',
-      'FEC349',
-      '86D0CB',
-      '38B7A8',
-      '828BBF',
-      '46558B'
-    ]).domain(range(props.valueRange))
+    this.colorScale = Chroma.scale(graphColors.split(' ')).domain(range(props.valueRange))
 
     // add some offset to values based on index
     // so they dont move all at the same time

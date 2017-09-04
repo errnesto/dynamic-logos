@@ -1,5 +1,4 @@
 @import "~@lib/colors.sass"
-$colors: $graph-color-1 $graph-color-2 $graph-color-3 $graph-color-4 $graph-color-5 $graph-color-6
 
 .graph
   position: relative
@@ -42,8 +41,8 @@ $colors: $graph-color-1 $graph-color-2 $graph-color-3 $graph-color-4 $graph-colo
       border-radius: 3px
       cursor: pointer
 
-    @each $color in $colors
-      $i: index($colors, $color) - 1
+    @each $color in $graph-colors
+      $i: index($graph-colors, $color) - 1
       &.color-#{$i}::range-thumb
         background: $color
 
