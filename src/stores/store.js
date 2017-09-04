@@ -1,5 +1,5 @@
 import Hover from 'hover'
-import examples from '~/assets/data/logos.json'
+import examples from '@assets/data/logos.json'
 
 const initialState = {
   axes: {

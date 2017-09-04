@@ -43,6 +43,7 @@ module.exports = {
             { loader: 'css-loader',
               options: {
                 modules: true,
+                import: true,
                 importLoaders: 2,
                 localIdentName: '[name]__[local]--[hash:base64:5]'
               }
@@ -61,12 +62,24 @@ module.exports = {
           // use style-loader in development
           fallback: 'style-loader'
         })
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 8192
+          }
+        }
       }
     ]
   },
   resolve: {
     alias: {
-      '~': path.resolve(__dirname, 'src'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@lib': path.resolve(__dirname, 'src/lib'),
+      '@stores': path.resolve(__dirname, 'src/stores'),
+      '@assets': path.resolve(__dirname, 'src/assets'),
       'react': 'preact-compat',
       'react-dom': 'preact-compat'
     }
