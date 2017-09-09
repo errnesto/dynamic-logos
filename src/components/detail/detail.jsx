@@ -1,15 +1,56 @@
 /** @jsx h */
 import { h } from 'preact'
+import { Link } from 'react-router-dom'
+import Header from '@components/Header/Header.jsx'
+import Graph from '@components/Graph/Graph.jsx'
+import classNames from './Detail.sass'
 
-const Detail = ({ match, examples }) => {
+const Detail = ({ match, examples, axes }) => {
   const id = match.params.id
   const example = examples.find(example => example.id === id)
-  return <div>
-    Detail: {example.name}
 
-    { example.images.map(imageURL =>
-      <img src={`img/${imageURL}`} />
-    )}
+  return <div>
+    <Header />
+    <div class={classNames.titleWrapper}>
+      <div class={classNames.titleWrapperInner}>
+        <Link class={classNames.closeLink} to='/'>✕</Link>
+        <h1 class={classNames.title}>
+          {example.name} ({example.companyType})<br />
+          Agentur: {example.agency}
+        </h1>
+      </div>
+    </div>
+    <div class={classNames.content}>
+      <div class={classNames.description}>
+        <ul class={classNames.tags}>
+          <li>{example.industry}</li>
+          <li>{example.countries}</li>
+          <li>{example.year}</li>
+        </ul>
+        <p>{example.text}</p>
+        <p>
+          <a target='_blank' href={example.companyWebsite}>
+            {example.companyWebsite}
+          </a><br />
+          { example.agencyWebsite.map(url =>
+            <span><a target='_blank' href={url}>{url}</a><br /></span>)
+          }
+        </p>
+      </div>
+      <div class={classNames.graphAndImages}>
+        <Graph class={classNames.graph}
+          axes={axes}
+          customValues={example.values}
+          valueRange={[0, 6]}
+          filterVariation={0}
+          showInputs={false}
+          animationSpeed={1} />
+
+        { example.images.map(imageURL =>
+          <img class={classNames.image} src={`img/${imageURL}`} />
+        )}
+      </div>
+    </div>
   </div>
 }
 

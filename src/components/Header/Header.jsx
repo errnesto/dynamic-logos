@@ -4,7 +4,7 @@ import styles from './Header.sass'
 
 const Header = () =>
   <div class={styles.header}>
-    Verschiebe die Regler des Graphen
+    Dynamisches Logo System
   </div>
 
 export default Header

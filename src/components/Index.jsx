@@ -18,7 +18,7 @@ export default class Index extends Component {
       <div>
         <Route exact path='/' render={() => <Overview {...state} />} />
         <Route exact path='/:id' render={(routeProps) =>
-          <Detail {...routeProps} examples={state.examples} />} />
+          <Detail {...routeProps} examples={state.examples} axes={state.axes} />} />
       </div>
     </Router>
   }

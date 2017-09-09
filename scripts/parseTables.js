@@ -11,9 +11,15 @@ console.log(data[0])
 
 const res = data.map(logo => ({
   id: logo.ID,
-  name: logo.Unternehmen,
+  name: logo.Unternehmensnahme,
+  companyType: logo.Unternehmensbeschreibung,
+  companyWebsite: logo['U-Webseite'],
   text: logo['Logo Beschreibung'],
   industry: logo.Branche,
+  year: logo.Jahreszahl,
+  countries: logo.Staaten,
+  agency: logo.Agentur,
+  agencyWebsite: [logo['A-Webseite'], logo['A-Webseite Alternative']],
   area: +(logo['Flächeninhalt'].replace(',', '.')),
   values: {
     color: +logo.Farbe,
