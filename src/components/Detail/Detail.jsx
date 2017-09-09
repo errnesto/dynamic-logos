@@ -27,6 +27,13 @@ const Detail = ({ match, examples, axes }) => {
           <li>{example.countries}</li>
           <li>{example.year}</li>
         </ul>
+        <Graph class={classNames.graph}
+          axes={axes}
+          customValues={example.values}
+          valueRange={[0, 6]}
+          filterVariation={0}
+          showInputs={false}
+          animationSpeed={1} />
         <p>{example.text}</p>
         <p>
           <a target='_blank' href={example.companyWebsite}>
@@ -38,14 +45,6 @@ const Detail = ({ match, examples, axes }) => {
         </p>
       </div>
       <div class={classNames.graphAndImages}>
-        <Graph class={classNames.graph}
-          axes={axes}
-          customValues={example.values}
-          valueRange={[0, 6]}
-          filterVariation={0}
-          showInputs={false}
-          animationSpeed={1} />
-
         { example.images.map(imageURL =>
           <img class={classNames.image} src={`img/${imageURL}`} />
         )}
