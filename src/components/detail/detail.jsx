@@ -1,7 +1,6 @@
 /** @jsx h */
 import { h } from 'preact'
 import { Link } from 'react-router-dom'
-import Header from '@components/Header/Header.jsx'
 import Graph from '@components/Graph/Graph.jsx'
 import classNames from './Detail.sass'
 
@@ -10,7 +9,6 @@ const Detail = ({ match, examples, axes }) => {
   const example = examples.find(example => example.id === id)
 
   return <div>
-    <Header />
     <div class={classNames.titleWrapper}>
       <div class={classNames.titleWrapperInner}>
         <Link class={classNames.closeLink} to='/'>✕</Link>

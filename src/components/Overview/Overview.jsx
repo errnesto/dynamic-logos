@@ -1,14 +1,14 @@
 /** @jsx h */
 import { h } from 'preact'
 import mapValues from 'lodash/mapValues'
-import Header from '@components/Header/Header.jsx'
+import Filter from '@components/Filter/Filter.jsx'
 import Graph from '@components/Graph/Graph.jsx'
 import Logos from '@components/Logos/Logos.jsx'
 import styles from './Overview.sass'
 
-const Overview = ({ axes, filterVariation, industries, examples, selectedExample }) => {
+const Overview = ({ axes, filterVariation, examples, selectedExample, toggleFilters }) => {
   return <div>
-    <Header />
+    <Filter filters={toggleFilters} />
 
     <Graph class={styles.graph}
       axes={axes}
@@ -19,7 +19,8 @@ const Overview = ({ axes, filterVariation, industries, examples, selectedExample
       animationSpeed={selectedExample ? 10 : 1} />
 
     <Logos examples={examples}
-      filter={mapValues(axes, axis => axis.filter)}
+      graphFilter={mapValues(axes, axis => axis.filter)}
+      toggleFilters={toggleFilters}
       filterVariation={filterVariation}
       selectedExample={selectedExample} />
   </div>

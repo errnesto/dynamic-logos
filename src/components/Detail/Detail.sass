@@ -2,7 +2,10 @@
 @import "~@lib/styleVars.sass"
 
 .titleWrapper
-  position: relative
+  position: sticky
+  z-index: 100
+  top: 60px
+  width: 100%
   background-color: $grey
   padding: 10px 0
 
@@ -24,6 +27,7 @@
 
 .content
   max-width: $content-width
+  overflow: hidden
   margin: 0 auto
   padding: 20px 30px
 

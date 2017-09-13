@@ -4,9 +4,14 @@ import { Link } from 'react-router-dom'
 import styles from './Logos.sass'
 import DynamicImage from './DynamicImage.jsx'
 
-const Logos = ({ examples, selectedExample, filter, filterVariation }, { actions }) => {
+const Logos = ({ examples, selectedExample, graphFilter, toggleFilters, filterVariation },
+  { actions }) => {
   const filteredExamples = examples.filter(example =>
-    Object.entries(filter).every(([filterKey, filter]) => {
+    toggleFilters.every(filter => filter.options.some(({ title, isActive }) =>
+      isActive && example[filter.key] === title)
+    ) &&
+
+    Object.entries(graphFilter).every(([filterKey, filter]) => {
       if (!filter.isActive) return true
 
       const value = example.values[filterKey] >= 0 ? example.values[filterKey] : 0

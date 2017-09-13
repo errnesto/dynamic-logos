@@ -28,27 +28,42 @@ const initialState = {
       filter: { isActive: false, value: 2 }
     }
   },
-  industries: [
-    'Hotel & Gastronomie',
-    'Tourismus',
-    'Museum & Kunst',
-    'Energie & Umwelt',
-    'Pharma & Gesundheit',
-    'Handwerk',
-    'Veranstaltungen',
-    'Theater & Musik',
-    'Technik & Telekommunikation',
-    'Medien',
-    'Beratung & Marketing',
-    'Design, Fotografie & Film',
-    'Forschung, Bildung & Entwicklung',
-    'Architektur & Konstruktion',
-    'Finanzen, Versicherungen & Immobilien',
-    'Handel',
-    'Textil & Bekleidung',
-    'Stiftungen & Sozialer / Öffentlicher Dienst'
-  ],
   filterVariation: 1,
+  toggleFilters: [
+    {
+      title: 'Branche',
+      key: 'industry',
+      options: [
+        { title: 'Hotel & Gastronomie', isActive: true },
+        { title: 'Tourismus', isActive: true },
+        { title: 'Museum & Kunst', isActive: true },
+        { title: 'Energie & Umwelt', isActive: true },
+        { title: 'Pharma & Gesundheit', isActive: true },
+        { title: 'Handwerk', isActive: true },
+        { title: 'Veranstaltungen', isActive: true },
+        { title: 'Theater & Musik', isActive: true },
+        { title: 'Technik & Telekommunikation', isActive: true },
+        { title: 'Medien', isActive: true },
+        { title: 'Beratung & Marketing', isActive: true },
+        { title: 'Design, Fotografie & Film', isActive: true },
+        { title: 'Forschung, Bildung & Entwicklung', isActive: true },
+        { title: 'Architektur & Konstruktion', isActive: true },
+        { title: 'Finanzen, Versicherungen & Immobilien', isActive: true },
+        { title: 'Handel', isActive: true },
+        { title: 'Textil & Bekleidung', isActive: true },
+        { title: 'Stiftungen & Sozialer / Öffentlicher Dienst', isActive: true }
+      ]
+    },
+    {
+      title: 'Jahr',
+      key: 'year',
+      options: [
+        { title: '2008', isActive: true },
+        { title: '2009', isActive: true },
+        { title: '2010', isActive: true }
+      ]
+    }
+  ],
   selectedExample: null,
   examples: examples
 }
@@ -76,6 +91,12 @@ const actions = {
       axes: updatedAxes,
       selectedExample: null
     }
+  },
+
+  toggleFilterOtion: (state, { filterIndex, optionIndex }) => {
+    const filter = state.toggleFilters[filterIndex]
+    filter.options[optionIndex].isActive = !filter.options[optionIndex].isActive
+    return state
   },
 
   selectExample: (state, example) => ({ ...state, selectedExample: example }),
