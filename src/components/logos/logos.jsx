@@ -25,7 +25,7 @@ const Logos = ({ examples, selectedExample, graphFilter, toggleFilters, filterVa
       <li key={example.id}
         onMouseEnter={() => { actions.selectExample(example) }}
         onMouseLeave={actions.deselectExample}>
-        <Link to={example.id} class={styles.inner}>
+        <Link to={`detail/${example.id}`} class={styles.inner}>
           <h2>{example.name}</h2>
           <DynamicImage images={example.images}
             animateImages={selectedExample && example.id === selectedExample.id} />
