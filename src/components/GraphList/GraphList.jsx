@@ -7,7 +7,7 @@ const GraphList = ({ examples, axes, valueRange }) =>
   <ul>
     {examples.map(example =>
       <li class={classNames.example}>
-        <h2>{example.name}</h2>
+        <h2>{example.name} ({example.dynamics.toFixed(3)})</h2>
         <Graph class={classNames.graph} axes={axes} values={example.values}
           valueRange={valueRange} labelFontSize='8px' />
       </li>
