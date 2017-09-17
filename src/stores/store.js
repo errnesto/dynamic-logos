@@ -28,6 +28,7 @@ const initialState = {
       filter: { isActive: false, value: 2 }
     }
   },
+  valueRange: [0, 6],
   filterVariation: 1,
   toggleFilters: [
     {

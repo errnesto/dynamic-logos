@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Graph from '@components/Graph/Graph.jsx'
 import classNames from './Detail.sass'
 
-const Detail = ({ match, examples, axes }) => {
+const Detail = ({ match, examples, axes, valueRange }) => {
   const id = match.params.id
   const example = examples.find(example => example.id === id)
 
@@ -25,13 +25,9 @@ const Detail = ({ match, examples, axes }) => {
           <li>{example.countries}</li>
           <li>{example.year}</li>
         </ul>
-        <Graph class={classNames.graph}
-          axes={axes}
-          customValues={example.values}
-          valueRange={[0, 6]}
-          filterVariation={0}
-          showInputs={false}
-          animationSpeed={1} />
+        <Graph class={classNames.graph} axes={axes} values={example.values}
+          valueRange={valueRange} />
+
         <p>{example.text}</p>
         <p>
           <a target='_blank' href={example.companyWebsite}>

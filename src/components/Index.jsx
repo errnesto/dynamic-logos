@@ -21,9 +21,13 @@ export default class Index extends Component {
         <Header />
         <Route exact path='/' render={() => <Overview {...state} />} />
         <Route path='/detail/:id' render={(routeProps) =>
-          <Detail {...routeProps} examples={state.examples} axes={state.axes} />} />
+          <Detail {...routeProps} examples={state.examples} axes={state.axes}
+            valueRange={state.valueRange} />
+        } />
         <Route path='/graphList' render={() =>
-          <GraphList examples={state.examples} axes={state.axes} />} />
+          <GraphList examples={state.examples} axes={state.axes}
+            valueRange={state.valueRange} />
+        } />
       </div>
     </Router>
   }

@@ -23,28 +23,38 @@ export default class Graph extends Component {
     this.getSize()
   }
 
-  render ({ class: classNames, axes, customValues, valueRange, filterVariation, showInputs, animationSpeed },
-          { width, height },
-          { actions }) {
+  render (props, { width, height }, { actions }) {
+    const {
+      class: className,
+      axes = {},
+      values = {},
+      valueRange = [0, 1],
+      labelFontSize = '12px',
+      filterInputs: {
+        enabled: inputsAreEnabled = false,
+        visible: inputsAreVisible = true
+      } = {},
+      animation: {
+        variation = 0,
+        speed: animationSpeed = 1
+      } = {}
+    } = props
+
     const axesArray = Object.entries(axes)
+      .map(([key, axis]) => ({ key, axis, value: values[key] }))
+
     const numberOfAxes = axesArray.length
     const rotationStep = (360 / numberOfAxes)
     const rotationOffset = -90 - 360 / (numberOfAxes * 2)
     const rangeSize = valueRange[1] - valueRange[0]
-    const activeValues = axesArray.map(([key, axis]) =>
-      customValues[key] || (axis.filter.isActive ? axis.filter.value : null))
-    const allValues = axesArray.map(([key, axis]) =>
-      customValues[key] || axis.filter.value)
 
-    return <div class={`${styles.graph} ${classNames}`}
+    return <div class={`${styles.graph} ${className}`}
       ref={graph => { this.graphElement = graph }}>
 
-      <Sectors values={activeValues}
-        valueRange={valueRange}
-        variation={filterVariation}
-        animationSpeed={animationSpeed} />
+      <Sectors values={axesArray.map(({ value }) => value)} valueRange={valueRange}
+        variation={variation} animationSpeed={animationSpeed} />
 
-      { axesArray.map(([key, axis], index) => {
+      { axesArray.map(({ key, axis, value }, index) => {
         const rotatationStyle = {
           transform: `rotate(${(index >= numberOfAxes / 2) ? 180 : 0}deg)`
         }
@@ -57,25 +67,29 @@ export default class Graph extends Component {
             width: `${(rangeSize / 2) * 14}%`
           }}>
 
-          { showInputs && <input id={axis}
-            class={`${styles.axisSlider} ${styles[`color-${activeValues[index]}`]}`}
-            type='range'
-            value={allValues[index]}
-            min={valueRange[0]}
-            max={valueRange[1]}
-            step='1'
-            onInput={this.handleAxisValueChange(key)} /> }
+          { inputsAreEnabled && inputsAreVisible &&
+            <input id={key}
+              class={`${styles.axisSlider} ${styles[`color-${value}`]}`}
+              type='range'
+              value={axis.filter.value}
+              min={valueRange[0]}
+              max={valueRange[1]}
+              step='1'
+              onInput={this.handleAxisValueChange(key)} />
+          }
+
           <div class={styles.labelWrapper} >
-            <label for={axis} style={rotatationStyle}>{ axis.title }</label>
-            { showInputs &&
+            <label for={key} style={{ ...rotatationStyle, fontSize: labelFontSize }}>
+              {axis.title}
+            </label>
+            { inputsAreEnabled &&
               <input type='checkbox'
                 checked={axis.filter.isActive}
-                class={styles.axisCheckbox}
+                class={`${styles.axisCheckbox} ${!inputsAreVisible && styles.invisible}`}
                 style={rotatationStyle}
                 onChange={this.handleToggleFilter(key)} />
             }
           </div>
-
         </div>
       })}
     </div>

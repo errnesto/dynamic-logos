@@ -55,18 +55,19 @@
     left: calc(100% + 10px)
     white-space: nowrap
     font-size: 0
+    background-color: black
+    color: white
+    border-radius: 3px
+    padding: 2px 4px
 
     label
       display: inline-block
-      line-height: 23px
       margin-left: 5px
-      color: white
-      background-color: black
-      border-radius: 2px
-      padding: 4px
-      font-size: 12px
-      line-height: 11px
+      font-size: 100%
 
     .axisCheckbox
-      display: inline
-      vertical-align: middle
+      display: inline-block
+      vertical-align: baseline
+
+      &.invisible
+        opacity: 0
