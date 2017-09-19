@@ -1,41 +1,50 @@
 /** @jsx h */
 import { h } from 'preact'
+import { Link } from 'react-router-dom'
 import Graph from '@components/Graph/Graph.jsx'
 import classNames from './ResearchPage.sass'
 
 const ResearchPage = ({ axes, valueRange, example }) => {
   return <article class={classNames.researchPage}>
-    <section>
-      <h2>Die Forschung:</h2>
-      <div class='text'>
-        <p>
-          Die Geschwindigkeit in unserer Gesellschaft nimmt stätig zu, sei es in Form von
-          Kommunikation oder technischen Entwicklungen. In der Forschungsarbeit zur
-          Web-App wurde der Frage nachgegangen, wie Marken und im Speziellen Logos in
-          flüchtigen Zeiten gestaltet werden sollten? Kann ein statisches Logo eine Marke
-          auf unterschiedlichen Kanälen noch adäquat präsentieren, in den Dialog mit dem
-          Rezipienten treten, den Zeitgeist repräsentieren und gleichzeitig dem Kunden
-          Sicherheit in einer Welt voller Ungewissheit geben? Oder sind Dynamische Logos
-          eventuell die Lösung für Unternehmen, Designer und Markenmanager, um ihre Marke
-          flexibel der Umwelt mit ihren veränderten Herausforderungen dynamisch
-          anzupassen? Das Phänomen der Dynamischen Logos wurde durch unterschiedliche
-          Forschungsansätze qualitativ wie quantitativ untersucht. Zum einen wurde ein
-          Kategorisierungssystem des Dynamischen Logo Systems entwickelt, das die
-          unterschiedlichen Gattungen und Spezies von Dynamischen Logos abbildet und
-          verschiedene Beispiele von Dynamischen Logos kategorisiert. Durch das Dynamische
-          Logo System kann der Grad an Flexibilität eines Dynamischen Logos ermittelt
-          werden. Die Web-App in Form eines interaktiven Logo-Archivs dient als
-          Visualisierung Forschungsergebnisse. Ziel der Web-App ist es, Unternehmen,
-          Designer und Markenmanager die Beantwortung der Frage, ob Dynamische Logos die
-          Lösung schlechthin sind, Marken flexibel der Umwelt mit ihren veränderten
-          Herausforderungen dynamisch anzupassen, zu ermöglichen.
-        </p>
+    <div class={classNames.titleWrapper}>
+      <div class={classNames.titleInner}>
+        <Link class={classNames.closeLink} to='/'>✕</Link>
+        <h2>Die Forschung:</h2>
       </div>
+    </div>
+    <section class={classNames.twoColSection}>
+      <p>
+        Die Geschwindigkeit in unserer Gesellschaft nimmt stätig zu, sei es in Form von
+        Kommunikation oder technischen Entwicklungen. In der Forschungsarbeit zur
+        Web-App wurde der Frage nachgegangen, wie Marken und im Speziellen Logos in
+        flüchtigen Zeiten gestaltet werden sollten? Kann ein statisches Logo eine Marke
+        auf unterschiedlichen Kanälen noch adäquat präsentieren, in den Dialog mit dem
+        Rezipienten treten, den Zeitgeist repräsentieren und gleichzeitig dem Kunden
+        Sicherheit in einer Welt voller Ungewissheit geben? Oder sind Dynamische Logos
+        eventuell die Lösung für Unternehmen, Designer und Markenmanager, um ihre Marke
+        flexibel der Umwelt mit ihren veränderten Herausforderungen dynamisch
+        anzupassen? Das Phänomen der Dynamischen Logos wurde durch unterschiedliche
+        Forschungsansätze qualitativ wie quantitativ untersucht. Zum einen wurde ein
+        Kategorisierungssystem des Dynamischen Logo Systems entwickelt, das die
+        unterschiedlichen Gattungen und Spezies von Dynamischen Logos abbildet und
+        verschiedene Beispiele von Dynamischen Logos kategorisiert. Durch das Dynamische
+        Logo System kann der Grad an Flexibilität eines Dynamischen Logos ermittelt
+        werden. Die Web-App in Form eines interaktiven Logo-Archivs dient als
+        Visualisierung Forschungsergebnisse. Ziel der Web-App ist es, Unternehmen,
+        Designer und Markenmanager die Beantwortung der Frage, ob Dynamische Logos die
+        Lösung schlechthin sind, Marken flexibel der Umwelt mit ihren veränderten
+        Herausforderungen dynamisch anzupassen, zu ermöglichen.
+      </p>
       <Graph class={classNames.graph} axes={axes} values={example.values}
         valueRange={valueRange} />
     </section>
+    <div class={classNames.titleWrapper}>
+      <div class={classNames.titleInner}>
+        <Link class={classNames.closeLink} to='/'>✕</Link>
+        <h2>Definition Dynamischen Logo:</h2>
+      </div>
+    </div>
     <section>
-      <h2>Definition Dynamischen Logo:</h2>
       <div class='text'>
         <p>
           Bei Dynamischen Logos handelt es sich nicht um ein gesamtes dynamisches
@@ -66,8 +75,13 @@ const ResearchPage = ({ axes, valueRange, example }) => {
         </p>
       </div>
     </section>
+    <div class={classNames.titleWrapper}>
+      <div class={classNames.titleInner}>
+        <Link class={classNames.closeLink} to='/'>✕</Link>
+        <h2>Die Komponenten Dynamischer Logos:</h2>
+      </div>
+    </div>
     <section>
-      <h2>Die Komponenten Dynamischer Logos:</h2>
       <div class='text'>
         <p>
           Ein Dynamisches Logo kann im Vergleich zu einem singulären Logo aus statischen
@@ -114,8 +128,13 @@ const ResearchPage = ({ axes, valueRange, example }) => {
         </dl>
       </div>
     </section>
+    <div class={classNames.titleWrapper}>
+      <div class={classNames.titleInner}>
+        <Link class={classNames.closeLink} to='/'>✕</Link>
+        <h2>Die Gattungen und Spezies Dynamischer Logos:</h2>
+      </div>
+    </div>
     <section>
-      <h2>Die Gattungen und Spezies Dynamischer Logos:</h2>
       <p>
         Ein Dynamisches Logo kann nicht nur über die Ausprägung von Flexibilität
         (Verhältnis von Flexiblen und Statischen Komponenten) definiert werden, sondern
@@ -221,8 +240,13 @@ const ResearchPage = ({ axes, valueRange, example }) => {
         </tbody>
       </table>
     </section>
+    <div class={classNames.titleWrapper}>
+      <div class={classNames.titleInner}>
+        <Link class={classNames.closeLink} to='/'>✕</Link>
+        <h2>Kontakt</h2>
+      </div>
+    </div>
     <section>
-      <h2>Kontakt</h2>
       <p>
         Um den Index Dynamischer Logos zu erweitern und aktuell zu halten laden wir Sie
         herzlich dazu ein Ihre Dynamischen Logos einzureichen. Dabei wird Ihr Beispiel –
