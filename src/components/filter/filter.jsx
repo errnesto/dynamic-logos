@@ -21,7 +21,20 @@ export default class Filter extends Component {
   }
 
   handleFilterToggle = ({ filterIndex, optionIndex }) => () => {
-    this.context.actions.toggleFilterOtion({ filterIndex, optionIndex })
+    const filterOptions = this.props.filters[filterIndex].options
+    const allAreActive = filterOptions.every(o => o.isActive)
+    const onlySelectedIsActive = filterOptions.every((option, index) =>
+      (!option.isActive && index !== optionIndex) ||
+      (option.isActive && index === optionIndex))
+
+    if (allAreActive || onlySelectedIsActive) {
+      filterOptions.forEach((_, index) => {
+        if (index === optionIndex) return
+        this.context.actions.toggleFilterOtion({ filterIndex, optionIndex: index })
+      })
+    } else {
+      this.context.actions.toggleFilterOtion({ filterIndex, optionIndex })
+    }
   }
 
   render ({ filters }) {
@@ -46,7 +59,7 @@ export default class Filter extends Component {
               onClick={this.handleFilterToggle(
                 { filterIndex: detailsIndex, optionIndex }
               )}>
-              {option.title}
+              {option.title !== '' ? option.title : '?'}
             </li>
           )}
         </ul>

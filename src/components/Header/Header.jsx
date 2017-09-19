@@ -14,9 +14,9 @@ const Header = () => {
   ]
 
   return <div class={classNames.header}>
-    <Link to='/' class={classNames.title}>
-      <h1><TextAnimator words={words} /></h1>
-    </Link>
+    <h1 class={classNames.title} onClick={() => { window.location = window.location.origin }}>
+      <TextAnimator words={words} />
+    </h1>
     <nav class={classNames.menu}>
       <Link to='/research' class={classNames.menuItem}>Forschung</Link>
       <button type='button' class={classNames.menuItem}>Legende</button>

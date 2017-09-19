@@ -10,7 +10,6 @@ const Logos = ({ examples, selectedExample, graphFilter, toggleFilters, filterVa
     toggleFilters.every(filter => filter.options.some(({ title, isActive }) =>
       isActive && example[filter.key] === title)
     ) &&
-
     Object.entries(graphFilter).every(([filterKey, filter]) => {
       if (!filter.isActive) return true
 

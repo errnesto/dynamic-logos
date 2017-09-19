@@ -7,9 +7,15 @@ const data = CSVParser.parseFiles(path.join(__dirname, '/data/logoData.csv'),
 const images = CSVParser.parseFiles(path.join(__dirname, '/data/logoImages.csv'),
                                     { header: true }).data
 
-// console.log(data[0])
+const years = new Set()
+const industries = new Set()
+const countries = new Set()
 
 const res = data.map(logo => {
+  years.add(logo.Jahreszahl)
+  industries.add(logo.Branche)
+  countries.add(logo.Staaten)
+
   const values = {
     color: +logo.Farbe,
     wording: +logo.Text,
@@ -19,7 +25,6 @@ const res = data.map(logo => {
     form: +logo.Formwahrnehmung
   }
   const valuesArray = Object.keys(values).map(key => values[key])
-  console.log(valuesArray.length)
 
   return {
     id: logo.ID,
@@ -32,7 +37,6 @@ const res = data.map(logo => {
     countries: logo.Staaten,
     agency: logo.Agentur,
     agencyWebsite: [logo['A-Webseite'], logo['A-Webseite Alternative']],
-    area: +(logo['Flächeninhalt'].replace(',', '.')),
     values: values,
     dynamics: valuesArray.reduce((prev, value) => prev + Math.PI * value * value, 0) /
       valuesArray.length,
@@ -41,8 +45,22 @@ const res = data.map(logo => {
   }
 })
 
-res.sort((a, b) => a.dynamics - b.dynamics)
+const buildFilterOptionsFrom = (set) => {
+  const array = Array.from(set)
+  return array.sort().map(value => ({ title: value, isActive: true }))
+}
 
+const filters = [
+  { key: 'year', title: 'Jahr', options: buildFilterOptionsFrom(years) },
+  { key: 'industry', title: 'Branche', options: buildFilterOptionsFrom(industries) },
+  { key: 'countries', title: 'Land', options: buildFilterOptionsFrom(countries) }
+]
+
+res.sort((a, b) => a.dynamics - b.dynamics)
 fs.writeFile(path.join(__dirname, '../src/assets/data/logos.json'), JSON.stringify(res), err => {
+  if (err) return console.log(err)
+})
+
+fs.writeFile(path.join(__dirname, '../src/assets/data/toggleFilters.json'), JSON.stringify(filters), err => {
   if (err) return console.log(err)
 })
