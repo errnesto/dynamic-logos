@@ -7,15 +7,15 @@
 
 .slider
   position: absolute
-  height: 20px
+  height: 23px
   margin-top: -10px
   width: 40%
   transform-origin: 0% 50%
 
   .axisSlider
-    margin: -1px -10px
+    margin: 0 -10px
     display: block
-    height: 20px
+    height: 23px
     width: calc(100% + 20px)
     background-color: transparent
     appearance: none
@@ -58,16 +58,20 @@
     background-color: black
     color: white
     border-radius: 3px
-    padding: 2px 4px
+    padding: 0 4px
+    height: 23px
+    line-height: 23px
 
     label
       display: inline-block
-      margin-left: 5px
       font-size: 100%
+      cursor: pointer
 
     .axisCheckbox
       display: inline-block
       vertical-align: baseline
+      margin-left: 5px
+      cursor: pointer
 
       &.invisible
         opacity: 0

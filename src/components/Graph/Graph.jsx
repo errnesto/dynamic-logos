@@ -68,7 +68,7 @@ export default class Graph extends Component {
           }}>
 
           { inputsAreEnabled && inputsAreVisible &&
-            <input id={key}
+            <input id={`${key}-slider`}
               class={`${styles.axisSlider} ${styles[`color-${value}`]}`}
               type='range'
               value={axis.filter.value}
@@ -84,6 +84,7 @@ export default class Graph extends Component {
             </label>
             { inputsAreEnabled &&
               <input type='checkbox'
+                id={key}
                 checked={axis.filter.isActive}
                 class={`${styles.axisCheckbox} ${!inputsAreVisible && styles.invisible}`}
                 style={rotatationStyle}
