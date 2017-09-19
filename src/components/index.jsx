@@ -5,6 +5,7 @@ import Header from '@components/Header/Header.jsx'
 import Overview from '@components/Overview/Overview.jsx'
 import Detail from '@components/Detail/Detail.jsx'
 import GraphList from '@components/GraphList/GraphList.jsx'
+import ResearchPage from '@components/ResearchPage/ResearchPage.jsx'
 import store from '@stores/store.js'
 import './index.sass'
 
@@ -26,6 +27,10 @@ export default class Index extends Component {
         } />
         <Route path='/graphList' render={() =>
           <GraphList examples={state.examples} axes={state.axes}
+            valueRange={state.valueRange} />
+        } />
+        <Route path='/research' render={() =>
+          <ResearchPage example={state.examples[120]} axes={state.axes}
             valueRange={state.valueRange} />
         } />
       </div>

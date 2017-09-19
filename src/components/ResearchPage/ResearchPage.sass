@@ -1,0 +1,50 @@
+@import "~@lib/colors.sass"
+@import "~@lib/styleVars.sass"
+
+.researchPage
+  section
+    width: $content-width
+    margin: 0 auto
+
+  p
+    max-width: 700px
+
+.graph
+  width: 300px
+
+.speciesTable
+  counter-reset: species
+  border-spacing: 5px
+
+  tr
+    counter-increment: species
+
+    @each $color in $graph-colors
+      $i: index($graph-colors, $color) - 1
+      &:nth-child(0n + #{$i}) .species
+        background: $color
+
+  th
+    padding: 5px 15px 5px
+    vertical-align: top
+    text-align: left
+    background-color: $grey
+
+  td
+    vertical-align: top
+    text-align: left
+    padding: 0 9px
+
+    p
+      margin-top: 0
+
+  .species
+    text-align: center
+    vertical-align: middle
+
+    &::before
+        display: block
+        font-weight: bold
+        font-size: 1.5em
+        content: counter(species)
+
