@@ -23,9 +23,8 @@ const Logos = ({ examples, selectedExample, graphFilter, toggleFilters, filterVa
         Dynamisches<br /> Logo<br /> einreichen
       </a>
     </li>
-    {Array(5).fill('').map(_ =>
-      <li class={classNames.ghostItem}></li>)
-    }
+    {/* add some ghost items at the end to make flex styles look nicer */}
+    { Array(5).fill('').map(_ => <li class={classNames.ghostItem} />) }
   </ul>
 }
 
