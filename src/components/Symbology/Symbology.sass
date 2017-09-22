@@ -1,0 +1,55 @@
+@import "~@lib/colors.sass"
+
+.closeLink
+  position: absolute
+  top: 0
+  right: 10px
+  color: inherit
+  text-decoration: none
+  font-size: 25px
+  line-height: 25px
+  margin: 0
+  cursor: pointer
+
+.symbology
+  position: absolute
+  top: 60px
+  right: 0
+  background-color: white
+  width: 350px
+
+  table
+    counter-reset: species -1
+    border-spacing: 5px
+
+    tr
+      counter-increment: species
+
+      @each $color in $graph-colors
+        $i: index($graph-colors, $color)
+        &:nth-child(0n + #{$i}) .species
+          background: $color
+
+    th
+      padding: 5px 15px 5px
+      vertical-align: middle
+      text-align: left
+      background-color: $grey
+
+    td
+      vertical-align: top
+      text-align: left
+      padding: 0 9px
+
+    .species
+      text-align: left
+      vertical-align: middle
+
+      &::before
+        float: left
+        font-weight: bold
+        margin-right: 5px
+        content: counter(species) ':'
+
+      span
+        display: block
