@@ -246,29 +246,34 @@ const ResearchPage = ({ axes, valueRange, example }) => {
         <h2>Kontakt</h2>
       </div>
     </div>
-    <section>
-      <p>
-        Um den Index Dynamischer Logos zu erweitern und aktuell zu halten laden wir Sie
-        herzlich dazu ein Ihre Dynamischen Logos einzureichen. Dabei wird Ihr Beispiel –
-        sofern es der Definition von Dynamischen Logos entspricht - anhand der
-        beschriebenen Spezies und Logo-Komponenten durch das Dynamische Logo System
-        kategorisiert und archiviert.
-      </p>
-      <p>
-        Bitte geben Sei bei der Einreichung eines Logos folgende Daten an:
-        Unternehmen / Agentur / Branche / Umsetzungsjahr / Land / kurzen
-        Beschreibungstext zum Logo / Logo Abbildungen
-        (bis zu 10 Logo Varianten 50px X 50 px) / Web-Links als Quellennachweis.
-      </p>
-      <p>
-        Zum Einreichen eines Dynamischen Logos schreiben Sei eine Mail an:
-        dynamischelogos@wunderundfitzig.de
-      </p>
-      <p>
-        Wunder & Fitzig <br />
-        +49 (0) 30 864 514 59 <br />
-        <a href='mailto:info@wunderundfitzig.de'>info@wunderundfitzig.de</a>
-      </p>
+    <section class={classNames.twoColSection}>
+      <div>
+        <p>
+          Um den Index Dynamischer Logos zu erweitern und aktuell zu halten laden wir Sie
+          herzlich dazu ein Ihre Dynamischen Logos einzureichen. Dabei wird Ihr Beispiel –
+          sofern es der Definition von Dynamischen Logos entspricht - anhand der
+          beschriebenen Spezies und Logo-Komponenten durch das Dynamische Logo System
+          kategorisiert und archiviert.
+        </p>
+        <p>
+          Bitte geben Sei bei der Einreichung eines Logos folgende Daten an:
+          Unternehmen / Agentur / Branche / Umsetzungsjahr / Land / kurzen
+          Beschreibungstext zum Logo / Logo Abbildungen
+          (bis zu 10 Logo Varianten 500px * 500px) / Web-Links als Quellennachweis.
+        </p>
+        <p>
+          Zum Einreichen eines Dynamischen Logos schreiben Sie eine Mail an:
+          dynamischelogos@wunderundfitzig.de
+        </p>
+        <p>
+          Wunder & Fitzig <br />
+          +49 (0) 30 864 514 59 <br />
+          <a href='mailto:info@wunderundfitzig.de'>info@wunderundfitzig.de</a>
+        </p>
+      </div>
+      <a class={classNames.callToAction} href='mailto:dynamischelogos@wunderundfitzig.de'>
+        Dynamisches<br /> Logo<br /> einreichen
+      </a>
     </section>
   </article>
 }

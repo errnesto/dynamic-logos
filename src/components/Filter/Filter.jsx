@@ -37,11 +37,15 @@ export default class Filter extends Component {
     }
   }
 
-  render ({ filters }) {
+  render ({ filters, numberOfResults }) {
     const detailsIndex = this.state.detailsIndex
     const details = filters[detailsIndex]
 
     return <div class={classNames.filterComponent}>
+      <div class={classNames.resultNumberInfo}>
+        <label for='result-output'>Ergebnisse:</label>
+        <output id='result-output'>{ numberOfResults }</output>
+      </div>
       <ul class={classNames.filters}>
         {filters.map((filter, i) => {
           const isActive = i === detailsIndex

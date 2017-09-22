@@ -1,7 +1,9 @@
 .logos
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-evenly
   padding: 0
   margin: 0 auto
-  display: block
   list-style: none
   margin-bottom: 300px
   overflow: hidden
@@ -20,10 +22,7 @@
     line-height: 1.1em
 
   li
-    width: 200px
-    height: 260px
-    display: inline-block
-    vertical-align: top
+    flex: 0 0 200px
     text-align: center
     padding: 5px
 
@@ -45,6 +44,10 @@
       background-color: black
       color: white
       text-decoration: none
+
+  .ghostItem
+    height: 0
+    padding: 0
 
   img
     display: block

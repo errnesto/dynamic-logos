@@ -6,9 +6,12 @@
     max-width: $content-width
     padding: 0 30px
     margin: 20px auto 60px
+    min-height: calc(100vh - 230px)
 
   p
     line-height: 1.6em
+    max-width: 700px
+    margin-top: 0
 
 .titleWrapper
   position: sticky
@@ -65,16 +68,30 @@
     text-align: left
     padding: 0 9px
 
-    p
-      margin-top: 0
-
   .species
     text-align: center
     vertical-align: middle
 
     &::before
-        display: block
-        font-weight: bold
-        font-size: 1.5em
-        content: counter(species)
+      display: block
+      font-weight: bold
+      font-size: 1.5em
+      content: counter(species)
+
+.callToAction
+  text-align: center
+  background-color: black
+  width: 200px
+  height: 260px
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-shrink: 0
+  font-size: 18px
+  text-transform: uppercase
+  padding: 10px
+  color: white
+  text-decoration: none
+  margin-left: 30px
+
 

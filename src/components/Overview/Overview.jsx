@@ -19,15 +19,29 @@ const Overview = ({ axes, valueRange, filterVariation, examples, selectedExample
     enabled: true,
     visible: !selectedExample
   }
+  const graphFilter = mapValues(axes, axis => axis.filter)
+
+  const filteredExamples = examples.filter(example =>
+    toggleFilters.every(filter => filter.options.some(({ title, isActive }) =>
+      isActive && example[filter.key] === title)
+    ) &&
+    Object.entries(graphFilter).every(([filterKey, filter]) => {
+      if (!filter.isActive) return true
+
+      const value = example.values[filterKey] >= 0 ? example.values[filterKey] : 0
+      return value >= filter.value - filterVariation &&
+             value <= filter.value + filterVariation
+    })
+  )
 
   return <div>
-    <Filter filters={toggleFilters} />
+    <Filter filters={toggleFilters} numberOfResults={filteredExamples.length} />
 
     <Graph class={styles.graph} axes={axes} values={values} valueRange={valueRange}
       animation={animation} filterInputs={filterInputs} />
 
-    <Logos examples={examples}
-      graphFilter={mapValues(axes, axis => axis.filter)}
+    <Logos examples={filteredExamples}
+      graphFilter={graphFilter}
       toggleFilters={toggleFilters}
       filterVariation={filterVariation}
       selectedExample={selectedExample} />
