@@ -1,7 +1,7 @@
 /** @jsx h */
 import { h } from 'preact'
 import { Link } from 'react-router-dom'
-import styles from './Logos.sass'
+import classNames from './Logos.sass'
 import DynamicImage from './DynamicImage.jsx'
 
 const Logos = ({ examples, selectedExample, graphFilter, toggleFilters, filterVariation },
@@ -19,18 +19,23 @@ const Logos = ({ examples, selectedExample, graphFilter, toggleFilters, filterVa
     })
   )
 
-  return <ul class={styles.logos}>
+  return <ul class={classNames.logos}>
     { filteredExamples.map(example =>
       <li key={example.id}
         onMouseEnter={() => { actions.selectExample(example) }}
         onMouseLeave={actions.deselectExample}>
-        <Link to={`detail/${example.id}`} class={styles.inner}>
+        <Link to={`detail/${example.id}`} class={classNames.inner}>
           <h2>{example.name}</h2>
           <DynamicImage images={example.images}
             animateImages={selectedExample && example.id === selectedExample.id} />
         </Link>
       </li>
     )}
+    <li class={classNames.callToAction}>
+      <a href='mailto:dynamischelogos@wunderundfitzig.de'>
+        Dynamisches<br /> Logo<br /> einreichen
+      </a>
+    </li>
   </ul>
 }
 

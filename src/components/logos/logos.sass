@@ -5,7 +5,6 @@
   list-style: none
   margin-bottom: 300px
   overflow: hidden
-  text-align: center
 
   h2
     display: flex
@@ -22,8 +21,10 @@
 
   li
     width: 200px
+    height: 260px
     display: inline-block
     vertical-align: top
+    text-align: center
     padding: 5px
 
     .inner
@@ -31,6 +32,18 @@
       border: 1px solid black
       height: 100%
       color: black
+      text-decoration: none
+
+    &.callToAction a
+      display: flex
+      justify-content: center
+      align-items: center
+      height: 100%
+      font-size: 18px
+      text-transform: uppercase
+      padding: 10px
+      background-color: black
+      color: white
       text-decoration: none
 
   img
