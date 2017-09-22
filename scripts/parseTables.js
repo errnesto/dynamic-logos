@@ -56,7 +56,7 @@ const filters = [
   { key: 'countries', title: 'Land', options: buildFilterOptionsFrom(countries) }
 ]
 
-res.sort((a, b) => a.dynamics - b.dynamics)
+res.sort((a, b) => b.dynamics - a.dynamics)
 fs.writeFile(path.join(__dirname, '../src/assets/data/logos.json'), JSON.stringify(res), err => {
   if (err) return console.log(err)
 })
