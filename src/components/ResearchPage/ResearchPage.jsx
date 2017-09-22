@@ -13,30 +13,38 @@ const ResearchPage = ({ axes, valueRange, example }) => {
       </div>
     </div>
     <section class={classNames.twoColSection}>
-      <p>
-        Die Geschwindigkeit in unserer Gesellschaft nimmt stätig zu, sei es in Form von
-        Kommunikation oder technischen Entwicklungen. In der Forschungsarbeit zur
-        Web-App wurde der Frage nachgegangen, wie Marken und im Speziellen Logos in
-        flüchtigen Zeiten gestaltet werden sollten? Kann ein statisches Logo eine Marke
-        auf unterschiedlichen Kanälen noch adäquat präsentieren, in den Dialog mit dem
-        Rezipienten treten, den Zeitgeist repräsentieren und gleichzeitig dem Kunden
-        Sicherheit in einer Welt voller Ungewissheit geben? Oder sind Dynamische Logos
-        eventuell die Lösung für Unternehmen, Designer und Markenmanager, um ihre Marke
-        flexibel der Umwelt mit ihren veränderten Herausforderungen dynamisch
-        anzupassen? Das Phänomen der Dynamischen Logos wurde durch unterschiedliche
-        Forschungsansätze qualitativ wie quantitativ untersucht. Zum einen wurde ein
-        Kategorisierungssystem des Dynamischen Logo Systems entwickelt, das die
-        unterschiedlichen Gattungen und Spezies von Dynamischen Logos abbildet und
-        verschiedene Beispiele von Dynamischen Logos kategorisiert. Durch das Dynamische
-        Logo System kann der Grad an Flexibilität eines Dynamischen Logos ermittelt
-        werden. Die Web-App in Form eines interaktiven Logo-Archivs dient als
-        Visualisierung Forschungsergebnisse. Ziel der Web-App ist es, Unternehmen,
-        Designer und Markenmanager die Beantwortung der Frage, ob Dynamische Logos die
-        Lösung schlechthin sind, Marken flexibel der Umwelt mit ihren veränderten
-        Herausforderungen dynamisch anzupassen, zu ermöglichen.
-      </p>
+      <div>
+        <p>
+          Die Geschwindigkeit in unserer Gesellschaft nimmt stätig zu, sei es in Form von
+          Kommunikation oder technischen Entwicklungen. In der Forschungsarbeit zur
+          Web-App wurde der Frage nachgegangen, wie Marken und im Speziellen Logos in
+          flüchtigen Zeiten gestaltet werden sollten? Kann ein statisches Logo eine Marke
+          auf unterschiedlichen Kanälen noch adäquat präsentieren, in den Dialog mit dem
+          Rezipienten treten, den Zeitgeist repräsentieren und gleichzeitig dem Kunden
+          Sicherheit in einer Welt voller Ungewissheit geben? Oder sind Dynamische Logos
+          eventuell die Lösung für Unternehmen, Designer und Markenmanager, um ihre Marke
+          flexibel der Umwelt mit ihren veränderten Herausforderungen dynamisch
+          anzupassen?
+        </p>
+        <p>
+          Das Phänomen der Dynamischen Logos wurde durch unterschiedliche
+          Forschungsansätze qualitativ wie quantitativ untersucht. Zum einen wurde ein
+          Kategorisierungssystem des Dynamischen Logo Systems entwickelt, das die
+          unterschiedlichen Gattungen und Spezies von Dynamischen Logos abbildet und
+          verschiedene Beispiele von Dynamischen Logos kategorisiert. Durch das Dynamische
+          Logo System kann der Grad an Flexibilität eines Dynamischen Logos ermittelt
+          werden. Die Web-App in Form eines interaktiven Logo-Archivs dient als
+          Visualisierung Forschungsergebnisse.
+        </p>
+        <p>
+          Ziel der Web-App ist es, Unternehmen, Designer und Markenmanager
+          die Beantwortung der Frage, ob Dynamische Logos die
+          Lösung schlechthin sind, Marken flexibel der Umwelt mit ihren veränderten
+          Herausforderungen dynamisch anzupassen, zu ermöglichen.
+        </p>
+      </div>
       <Graph class={classNames.graph} axes={axes} values={example.values}
-        valueRange={valueRange} />
+        valueRange={valueRange} animation={{variation: 4}} />
     </section>
     <div class={classNames.titleWrapper}>
       <div class={classNames.titleInner}>
@@ -45,16 +53,16 @@ const ResearchPage = ({ axes, valueRange, example }) => {
       </div>
     </div>
     <section>
-      <div class='text'>
+      <div>
         <p>
-          Bei Dynamischen Logos handelt es sich nicht um ein gesamtes dynamisches
+          Bei Dynamischen Logos handelt es sich nicht um ein gesamtes Dynamisches
           Branding, sondern nur um den Teilbereich des Markenzeichens. Jedoch bedienen
           sich Dynamisches Logos bei den gleichen positiven Effekten (dynamische
           Anpassung auf den neuen Medien wie Webseiten, soziale Netzwerke und mobile
-          Angebote / In Dialog mit der Marke treten, sie anzueignen) die auch das
+          Angebote / in Dialog mit der Marke treten, die Marke anzueignen) die auch das
           Dynamische Branding hervorruft. Es kann festgehalten werden, dass die Qualität
-          eines dynamischen Logos in der Wechselbeziehung zwischen Subjekt, seinen
-          Inhalten und deren Visualisierung liegt. Somit können dynamische Logos nicht
+          eines Dynamischen Logos in der Wechselbeziehung zwischen Subjekt, seinen
+          Inhalten und deren Visualisierung liegt. Somit können Dynamische Logos nicht
           nur auf wechselnde Inhalte des Subjekts reagieren, sondern auch auf die
           seines Kontextes. Da sich ein Logo über den Faktor Zeit im Lebenszyklus eines
           Unternehmens /Marke revolutionär wie auch evolutionär durch ein Re-Branding
@@ -64,14 +72,14 @@ const ResearchPage = ({ axes, valueRange, example }) => {
           Logo handelt und dass er sich gleichzeitig darauf einstellt, mit
           unterschiedlichen Variationen konfrontiert zu werden.
         </p>
-        <p>
-          Ein dynamisches Logo kennzeichnet sich durch Veränderlichkeit,
+        <p class={classNames.definition}>
+          Ein Dynamisches Logo kennzeichnet sich durch Veränderlichkeit,
           Kontextbezogenheit, Prozesshaftigkeit, Performativität, Nicht-Linearität,
           Kohärenz und Vielfalt. Es ist nicht nur ein einfaches grafisches Zeichen, das
           ein bestimmtes Subjekt (Unternehmen, Organisation, Privatperson, Produkt)
           repräsentiert und sich dabei auf eine rein symbolische Ebene beschränkt,
           sondern es transportiert etwas Reales, dass sich am Jetzt orientiert und
-          dadurch performativ ist .
+          dadurch performativ ist.
         </p>
       </div>
     </section>
@@ -82,50 +90,65 @@ const ResearchPage = ({ axes, valueRange, example }) => {
       </div>
     </div>
     <section>
-      <div class='text'>
+      <div>
         <p>
           Ein Dynamisches Logo kann im Vergleich zu einem singulären Logo aus statischen
           und flexiblen Komponenten bestehen und dabei jedoch jede Form einer singulären
           Logo-Art (Wortmarke, Wortbildmarke, Bildmarke, Buchstabenmarke, Zahlenmarke,
-            Maskottchen Logo, Emblem Logo, Abstraktes Logo) annehmen. Die Grundlage für
-            die Komponenten des Dynamischen Logos stellen die klassischen Bestandteile
-            eines singulären Logos dar. Die einzelnen Komponenten erzeugen die Dynamik,
-            wobei mindestens eine Konstante beibehalten werden muss, um die
-            Wiedererkennung der Marken zu gewährleisten.
+          Maskottchen Logo, Emblem Logo, Abstraktes Logo) annehmen. Die Grundlage für
+          die Komponenten des Dynamischen Logos stellen die klassischen Bestandteile
+          eines singulären Logos dar. Die einzelnen Komponenten erzeugen die Dynamik,
+          wobei mindestens eine Konstante beibehalten werden muss, um die
+          Wiedererkennung der Marken zu gewährleisten.
         </p>
-        <dl>
-          <dt>Farbe:</dt>
-          <dd>
-            Werden unterschiedliche Farben (Farbskalen, Farbkonzepte) für das Dynamische
-            Logo verwendet? Die Verwendung von 1-3 Farben wird als statisch angesehen.
-          </dd>
-          <dt>Typografie:</dt>
-          <dd>
-            Werden unterschiedliche Schriften (Schrifttypen, Schriftfamilien,
-            Schriftkassen) oder Schriftsysteme, visuelle Schrift für das Dynamische
-            Logo verwendet?
-          </dd>
-          <dt>Form-Wahrnehmung:</dt>
-          <dd>
-            Wie wird die Form des Logos in der Gesamtbetrachtung wahrgenommen. Was ist der
-            ausschlaggebende Faktor(Spezies des dynamischen Logos) die die Wahrnehmung des
-            Logos bestimmt.
-          </dd>
-          <dt>Anordnung:</dt>
-          <dd>
-            Wie ist das Zusammenspiel (Größe, Position) zueinander der Komponenten des
-            Dynamischen Logos?
-          </dd>
-          <dt>Text:</dt>
-          <dd>
-            Wie verändert sich der Text bzw. die Wortmarke eines Dynamischen Logos?
-          </dd>
-          <dt>Bildwelt:</dt>
-          <dd>
-            Wie gestaltet sich das Key Visual (Fotografien, Grafiken, Illustrationen,
-            Piktogramme) eines Dynamischen Logos?
-          </dd>
+      </div>
+      <div class={classNames.twoColSection}>
+        <dl class={classNames.logoComponents}>
+          <div>
+            <dt>Farbe:</dt>
+            <dd>
+              Werden unterschiedliche Farben (Farbskalen, Farbkonzepte) für das Dynamische
+              Logo verwendet? Die Verwendung von 1-3 Farben wird als statisch angesehen.
+            </dd>
+          </div>
+          <div>
+            <dt>Typografie:</dt>
+            <dd>
+              Werden unterschiedliche Schriften (Schrifttypen, Schriftfamilien,
+              Schriftkassen) oder Schriftsysteme, visuelle Schrift für das Dynamische
+              Logo verwendet?
+            </dd>
+          </div>
+          <div>
+            <dt>Form-Wahrnehmung:</dt>
+            <dd>
+              Wie wird die Form des Logos in der Gesamtbetrachtung wahrgenommen. Was ist der
+              ausschlaggebende Faktor (Spezies des Dynamischen Logos) die die Wahrnehmung des
+              Logos bestimmt.
+            </dd>
+          </div>
+          <div>
+            <dt>Anordnung:</dt>
+            <dd>
+              Wie ist das Zusammenspiel (Größe und Position) zueinander der Komponenten des
+              Dynamischen Logos?
+            </dd>
+          </div>
+          <div>
+            <dt>Text:</dt>
+            <dd>
+              Wie verändert sich der Text bzw. die Wortmarke eines Dynamischen Logos?
+            </dd>
+          </div>
+          <div>
+            <dt>Bildwelt:</dt>
+            <dd>
+              Wie gestaltet sich das Key Visual (Fotografien, Grafiken, Illustrationen,
+              Piktogramme) eines Dynamischen Logos?
+            </dd>
+          </div>
         </dl>
+        <img class={classNames.componentsImage} src='staticImages/komponeten.png' />
       </div>
     </section>
     <div class={classNames.titleWrapper}>
@@ -139,7 +162,7 @@ const ResearchPage = ({ axes, valueRange, example }) => {
         Ein Dynamisches Logo kann nicht nur über die Ausprägung von Flexibilität
         (Verhältnis von Flexiblen und Statischen Komponenten) definiert werden, sondern
         auch über den Grad an Flexibilität, der sich über die unterschiedlichen Gattungen
-        von Dynamischen Logos ausdrückt. Ein dynamisches Logo kann in drei
+        von Dynamischen Logos ausdrückt. Ein Dynamisches Logo kann in drei
         unterschiedlichen Gattungen mit jeweils zwei Spezies eingeteilt werden:
       </p>
       <table class={classNames.speciesTable}>
@@ -168,11 +191,13 @@ const ResearchPage = ({ axes, valueRange, example }) => {
                 Briefpapier, Digitale Medien…), auf das das Logo platziert werden
                 Das Medium, in dem das Logo präsentiert wird spannt durch seine
                 Attribute und Möglichkeiten den Rahmen der durchführbaren Transformation
-                (gleichzeig Raster und Regel) des Logos auf. Bewegung: Variierte Logos
-                können auch durch die Abbildung von Bewegung, mittels einzelner
-                Standbilder, die direkt aus einem Bewegungsablauf abgeleitet werden,
-                entstehen, es wird ein übergeordnetes Gestaltungsprinzip benötigt, das
-                ebenfalls als Regel angesehen werden kann.
+                (gleichzeig Raster und Regel) des Logos auf.
+              </p>
+              <p>
+                Bewegung: Variierte Logos können auch durch die Abbildung von Bewegung,
+                mittels einzelner Standbilder, die direkt aus einem Bewegungsablauf
+                abgeleitet werden, entstehen, es wird ein übergeordnetes Gestaltungsprinzip
+                benötigt, das ebenfalls als Regel angesehen werden kann.
               </p>
               <p>
                 Transformation: Durch unterschiedliche Arten der Transformation des
@@ -255,7 +280,7 @@ const ResearchPage = ({ axes, valueRange, example }) => {
           beschriebenen Spezies und Logo-Komponenten durch das Dynamische Logo System
           kategorisiert und archiviert.
         </p>
-        <p>
+        <p class={classNames.definition}>
           Bitte geben Sei bei der Einreichung eines Logos folgende Daten an:
           Unternehmen / Agentur / Branche / Umsetzungsjahr / Land / kurzen
           Beschreibungstext zum Logo / Logo Abbildungen

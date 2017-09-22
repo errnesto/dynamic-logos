@@ -5,7 +5,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const createIndexHtml = new HtmlWebpackPlugin()
 const copyAssets = new CopyWebpackPlugin([
-  { from: 'src/assets/img', to: 'img' }
+  { from: 'src/assets/img', to: 'img' },
+  { from: 'src/assets/staticImages', to: 'staticImages' }
 ])
 const extractSass = new ExtractTextPlugin({
   filename: '[name].css',
@@ -50,7 +51,6 @@ module.exports = {
             { loader: 'postcss-loader',
               options: {
                 plugins: [
-                  require('cssnano'),
                   require('postcss-input-range'),
                   require('autoprefixer')
                 ]

@@ -21,9 +21,9 @@ const Detail = ({ match, examples, axes, valueRange }) => {
     <div class={classNames.content}>
       <div class={classNames.description}>
         <ul class={classNames.tags}>
-          <li>{example.industry}</li>
-          <li>{example.countries}</li>
-          <li>{example.year}</li>
+          {example.industry !== '' && <li>{example.industry}</li>}
+          {example.countries !== '' && <li>{example.countries}</li>}
+          {example.year !== '' && <li>{example.year}</li>}
         </ul>
         <Graph class={classNames.graph} axes={axes} values={example.values}
           valueRange={valueRange} />

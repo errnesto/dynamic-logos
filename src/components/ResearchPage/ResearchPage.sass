@@ -10,8 +10,8 @@
 
   p
     line-height: 1.6em
-    max-width: 700px
     margin-top: 0
+    text-align: justify
 
 .titleWrapper
   position: sticky
@@ -36,6 +36,10 @@
   h2
     font-size: 18px
 
+.definition
+  font-weight: bold
+  font-size: 0.8em
+
 .twoColSection
   display: flex
   align-items: flex-start
@@ -48,6 +52,7 @@
   counter-reset: species
   border-spacing: 5px
   margin-top: 40px
+  font-size: 0.8em
 
   tr
     counter-increment: species
@@ -76,13 +81,34 @@
       display: block
       font-weight: bold
       font-size: 1.5em
-      content: counter(species)
+      content: counter(species) ':'
+
+.logoComponents
+  font-size: 0.8em
+
+  div
+    margin-bottom: 10px
+
+  dt
+    font-weight: bold
+    display: inline
+    margin-right: 5px
+
+  dd
+    display: inline
+    margin: 0
+    padding: 0
+
+.componentsImage
+  width: 500px
+  margin-left: 30px
+  flex-shrink: 0
 
 .callToAction
   text-align: center
   background-color: black
-  width: 200px
-  height: 260px
+  width: 260px
+  height: 300px
   display: flex
   justify-content: center
   align-items: center

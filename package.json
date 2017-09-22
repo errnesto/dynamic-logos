@@ -4,7 +4,7 @@
   "description": "Visualisation of dynamic logos",
   "main": "index.html",
   "scripts": {
-    "dev": "webpack-dev-server --hot --progress",
+    "dev": "webpack-dev-server --hot --progress --optimize-minimize",
     "build": "webpack",
     "deploy": "sh deploy.sh",
     "parse": "node scripts/parseTables.js",
