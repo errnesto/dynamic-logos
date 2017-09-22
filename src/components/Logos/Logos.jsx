@@ -23,11 +23,9 @@ const Logos = ({ examples, selectedExample, graphFilter, toggleFilters, filterVa
         Dynamisches<br /> Logo<br /> einreichen
       </a>
     </li>
-    <li class={classNames.ghostItem} />
-    <li class={classNames.ghostItem} />
-    <li class={classNames.ghostItem} />
-    <li class={classNames.ghostItem} />
-    <li class={classNames.ghostItem} />
+    {Array(5).fill('').map(_ =>
+      <li class={classNames.ghostItem}></li>)
+    }
   </ul>
 }
 

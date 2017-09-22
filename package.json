@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "dev": "webpack-dev-server --hot --progress --optimize-minimize",
-    "build": "webpack",
+    "build": "webpack --optimize-minimize",
     "deploy": "sh deploy.sh",
     "parse": "node scripts/parseTables.js",
     "test": "echo \"Error: no test specified\" && exit 1"
